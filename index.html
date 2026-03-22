@@ -3,55 +3,116 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Fundação Blockstep</title>
+    <title>Fundação Blockstep/title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700;800&display=swap" rel="stylesheet">
     <link rel="icon" type="image/png" href="">
     <link rel="stylesheet" href="/css/style.css">
     
-    <link rel="preconnect" href="https://fonts.googleapis.com">
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
-    
 </head>
-<body oncontextmenu="return false;">
+<body>
 
-    <nav>
-        <div class="nav-logo"></div>
-        <div class="nav-links">
-            <a href="#" class="active">Início</a>
-            <a href="sobre.html">Sobre</a>
-            <a href="projetos.html">Projetos</a>
-            <a href="feedbacks.html">Suporte</a>
-            <a href="https://github.com/luizcsx/fundacao-blockstep"><b>Repositório</b></a>
+    <div vw class="enabled">
+        <div vw-access-button class="active"></div>
+        <div vw-plugin-wrapper><div class="vw-plugin-top-wrapper"></div></div>
+    </div>
+
+    <nav class="navbar">
+        <div class="container">
+            <div class="logo"></div>
+            <ul class="nav-links">
+                <li><a href="#"><i class="fa-solid fa-house"></i> Início</a></li>
+                <li><a href="#"><i class="fa-solid fa-gamepad"></i> Minigames</a></li>
+                <li><a href="#"><i class="fa-solid fa-users"></i> Usuários</a></li>
+                <li><a href="#"><i class="fa-solid fa-comments"></i> Fórum</a></li>
+                <li><a href="#"><i class="fa-solid fa-circle-info"></i> Sobre</a></li>
+            </ul>
         </div>
     </nav>
 
-    <section class="hero">
-        <div class="badge-beta">VERSÃO DEMO</div>
-        <h1>Educação movida a blocos.</h1>
-        <p>Desenvolvendo o raciocínio lógico de alunos do 1º ao 9º ano através de um ambiente digital seguro e intuitivo.</p>
-        <a href="cadastro-temporario.html" class="btn-primary">Acessar nossos projetos</a>
-    </section>
-
-    <div class="container">
-        <div class="grid-features">
-            <div class="feature-card">
-                <h3>Aprendizado Lógico</h3>
-                <p>Métodos estruturados para facilitar a compreensão de problemas complexos de forma visual.</p>
-            </div>
-            <div class="feature-card">
-                <h3>Nossa Missão</h3>
-                <p>Produzir o que é certo para o futuro da educação, unindo ética, tecnologia e métodos de aprendizado que funcionam de verdade.</p>
-            </div>
-            <div class="feature-card">
-                <h3>Transparência</h3>
-                <p>Foco total na educação e na entrega de ferramentas que funcionam de verdade.</p>
+    <header class="hero">
+        <div class="container">
+            <div class="hero-content">
+                <h1>Fundação <span>Blockstep</span></h1>
+                <p>Tecnologia nativa e lógica sequencial para transformar a educação básica no Brasil. Produzindo o que é certo.</p>
             </div>
         </div>
-    </div>
+    </header>
 
-    <footer>
-        <p>&copy; 2026 Fundação Blockstep. Todos os direitos reservados.</p>
+    <main class="container content-grid">
+        <section class="main-body">
+            <h2 class="sidebar-title">Pilares do Projeto</h2>
+            <div class="mission-grid">
+                <div class="card">
+                    <i class="fa-solid fa-brain"></i>
+                    <h3>Lógica Cognitiva</h3>
+                    <p>Foco no desenvolvimento do pensamento computacional estruturado.</p>
+                </div>
+                <div class="card">
+                    <i class="fa-solid fa-universal-access"></i>
+                    <h3>Acessibilidade</h3>
+                    <p>Inclusão total com VLibras e interface intuitiva para todos.</p>
+                </div>
+                <div class="card">
+                    <i class="fa-solid fa-code-branch"></i>
+                    <h3>Open Knowledge</h3>
+                    <p>Documentação aberta e repositórios públicos para transparência total.</p>
+                </div>
+            </div>
+            <div class="game-preview"></div>
+        </section>
+
+        <aside class="sidebar">
+            <h3 class="sidebar-title">Recursos e Repositórios</h3>
+            <a href="#" class="side-btn">GitHub Oficial <i class="fa-brands fa-github"></i></a>
+            <a href="#" class="side-btn">Wiki do Aluno <i class="fa-solid fa-book"></i></a>
+            <a href="#" class="side-btn">Repositório de Assets <i class="fa-solid fa-folder-open"></i></a>
+            <a href="#" class="side-btn">Manual Pedagógico <i class="fa-solid fa-file-pdf"></i></a>
+        </aside>
+    </main>
+
+    <footer class="main-footer">
+        <div class="container">
+            <div class="footer-grid">
+                <div class="footer-brand">
+                    <h2>Blockstep</h2>
+                    <p>Construindo o futuro da educação através do código e da lógica aplicada.</p>
+                </div>
+                <div class="footer-links">
+                    <h4>Navegação</h4>
+                    <ul>
+                        <li><a href="#">Minigames</a></li>
+                        <li><a href="#">Fórum</a></li>
+                        <li><a href="#">Comunidade</a></li>
+                    </ul>
+                </div>
+                <div class="footer-links">
+                    <h4>Documentação</h4>
+                    <ul>
+                        <li><a href="#">Wiki</a></li>
+                        <li><a href="#">GitHub</a></li>
+                        <li><a href="#">Manual</a></li>
+                    </ul>
+                </div>
+                <div class="footer-links">
+                    <h4>Suporte</h4>
+                    <ul>
+                        <li><a href="#">Sobre nós</a></li>
+                        <li><a href="#">Contato</a></li>
+                        <li><a href="#">Privacidade</a></li>
+                    </ul>
+                </div>
+            </div>
+
+            <div class="footer-bottom">
+                <p class="copy-text">&copy; 2026 Fundação Blockstep | <i class="fa-solid fa-shield-halved"></i> Tecnologia e Ética</p>
+                <p class="ai-disclaimer"><strong>Nota:</strong> Este site foi 100% editado com a ajuda da inteligência artificial e modificado manualmente pelo criador.</p>
+            </div>
+        </div>
     </footer>
+
+    <script src="https://vlibras.gov.br/app/vlibras-plugin.js"></script>
+    <script>new window.VLibras.Widget('https://vlibras.gov.br/app');</script>
 
 </body>
 </html>
