@@ -115,60 +115,52 @@
     <script>new window.VLibras.Widget('https://vlibras.gov.br/app');</script>
 
     <script>
-    const form = document.querySelector('form');
-    const genderBtns = document.querySelectorAll('.gender-btn');
-    const generoInput = document.getElementById('genero_input');
+        const btns = document.querySelectorAll('.gender-btn');
+        const inputGenero = document.getElementById('genero_input');
 
-    // 1. Lógica Visual dos Botões de Gênero
-    genderBtns.forEach(btn => {
-        btn.addEventListener('click', () => {
-            genderBtns.forEach(b => b.classList.remove('active'));
-            btn.classList.add('active');
-            generoInput.value = btn.getAttribute('data-value');
-        });
-    });
-
-    // 2. Envio do Formulário para a API
-    form.addEventListener('submit', async (e) => {
-        e.preventDefault();
-
-        // Coleta os dados dos campos
-        const dados = {
-            perfil: form.querySelector('select').value,
-            nome: form.querySelector('input[placeholder="Ex: Luiz Silva"]').value,
-            genero: generoInput.value,
-            email: form.querySelector('input[type="email"]').value,
-            nascimento: form.querySelector('input[type="date"]').value,
-            senha: form.querySelector('input[type="password"]').value
-        };
-
-        // Validação simples de gênero
-        if (!dados.genero) {
-            alert("Por favor, selecione como você se identifica (ícones).");
-            return;
-        }
-
-        try {
-            const response = await fetch('/api/registrar', {
-                method: 'POST',
-                headers: { 'Content-Type': 'application/json' },
-                body: JSON.stringify(dados)
+        btns.forEach(btn => {
+            btn.addEventListener('click', () => {
+                btns.forEach(b => b.classList.remove('active'));
+                btn.classList.add('active');
+                inputGenero.value = btn.getAttribute('data-value');
             });
+        });
 
-            const resultado = await response.json();
+        const form = document.querySelector('form');
+        form.addEventListener('submit', async (e) => {
+            e.preventDefault();
 
-            if (response.ok) {
-                alert('Matrícula realizada com sucesso na Fundação!');
-                window.location.href = '/login.html'; // Redireciona para o login
-            } else {
-                alert('Erro: ' + resultado.error);
+            const dados = {
+                perfil: form.querySelector('select').value,
+                nome: form.querySelector('input[type="text"]').value,
+                genero: inputGenero.value,
+                email: form.querySelector('input[type="email"]').value,
+                nascimento: form.querySelector('input[type="date"]').value,
+                senha: form.querySelector('input[type="password"]').value
+            };
+
+            if (!dados.genero) { return alert("Selecione o gênero nos ícones!"); }
+
+            try {
+                const response = await fetch('/api/registrar', {
+                    method: 'POST',
+                    headers: { 'Content-Type': 'application/json' },
+                    body: JSON.stringify(dados)
+                });
+
+                const resJson = await response.json();
+
+                if (response.ok) {
+                    alert('Usuário cadastrado com sucesso!');
+                    window.location.href = 'index.html';
+                } else {
+                    alert('Erro: ' + resJson.error);
+                }
+            } catch (err) {
+                alert('Erro ao conectar com o servidor.');
             }
-        } catch (error) {
-            console.error('Erro na requisição:', error);
-            alert('Erro ao conectar com o servidor. Tente novamente.');
-        }
-    });
-</script>
+        });
+    </script>
 
 </body>
 </html>
