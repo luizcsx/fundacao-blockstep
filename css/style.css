@@ -44,14 +44,28 @@
         }
 
         .logo {
-            width: 160px;
-            height: 40px;
-            background-image: url('logo.png');
-            background-size: contain;
-            background-repeat: no-repeat;
-            background-position: left center;
-            cursor: pointer;
-        }
+    font-size: 1.6rem;
+    font-weight: 800;
+    letter-spacing: -1.5px;
+    text-transform: lowercase;
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+    user-select: none;
+    
+    background: linear-gradient(90deg, var(--primary), var(--secondary));
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+}
+
+            .logo span {
+                margin-left: -1px;
+}
+
+            .logo:hover {
+            filter: brightness(1.2);
+            transition: 0.3s;
+}
 
         .nav-links {
             display: flex;
