@@ -1,6 +1,6 @@
-      :root {
+:root {
             --primary: #0066ff;
-            --secondary: #0066ff;
+            --secondary: #2f00ff;
             --text-dark: #0f172a;
             --text-muted: #64748b;
             --bg-light: #f8fafc;
@@ -46,7 +46,7 @@
         .logo {
             width: 160px;
             height: 40px;
-            background-image: url('SUA_URL_DA_LOGO.png');
+            background-image: url('/images/logo.png');
             background-size: contain;
             background-repeat: no-repeat;
             background-position: left center;
