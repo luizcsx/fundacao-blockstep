@@ -533,8 +533,8 @@
       this.classList.remove('loading'); this.disabled = false;
       if (d.ok) {
         al.className = 'auth-alert auth-alert-ok show';
-        document.getElementById('alert-reg-msg').textContent = 'Conta criada! Redirecionando…';
-        setTimeout(() => window.location.href = d.redirect || 'index.html', 1500);
+        document.getElementById('alert-reg-msg').textContent = 'Conta criada! Aguarde um momento...';
+        setTimeout(() => window.location.href = d.redirect || '/html/dashboard.html', 1500);
       } else {
         document.getElementById('alert-reg-msg').textContent = d.message || 'Erro ao criar conta.';
         al.classList.add('show');
@@ -649,7 +649,7 @@ async function cadastrarUsuario(event) {
 
     if (resultado.ok) {
       alert("Sucesso!");
-      window.location.href = 'index.html';
+      window.location.href = '/html/dashboard.html';
     } else {
       alert("Ops: " + resultado.message);
     }
