@@ -1,0 +1,8 @@
+{
+  "rewrites": [
+    {
+      "source": "/minigames/:name",
+      "destination": "/minigame.html"
+    }
+  ]
+}
