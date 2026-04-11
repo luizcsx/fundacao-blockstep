@@ -302,33 +302,38 @@
     }
   });
 
+<script type="module">
+  import { createClient } from 'https://jspm.dev/@supabase/supabase-js';
+
+  // Configuração inicial
+  const SUPABASE_URL = 'https://tkpatolybraskbedknjc.supabase.co';
+  const SUPABASE_KEY = 'sb_publishable_hrQmBCRFxI0YhyCkk7SOzA_1BvyFC9U';
+  const supabase = createClient(SUPABASE_URL, SUPABASE_KEY);
+
   const THUMB_MAP = {
     matematica:  { cls: 'math',    icon: 'fa-square-root-variable', label: 'Matemática'  },
-    historia:    { cls: 'history', icon: 'fa-scroll',               label: 'História'     },
-    ciencias:    { cls: 'science', icon: 'fa-flask',                label: 'Ciências'     },
-    portugues:   { cls: 'lit',     icon: 'fa-book',                 label: 'Português'    },
-    geografia:   { cls: 'geo',     icon: 'fa-earth-americas',       label: 'Geografia'    },
-    artes:       { cls: 'arts',    icon: 'fa-palette',              label: 'Artes'        },
-    'ed-fisica': { cls: 'phys',    icon: 'fa-person-running',       label: 'Ed. Física'   },
+    historia:    { cls: 'history', icon: 'fa-scroll',               label: 'História'    },
+    ciencias:    { cls: 'science', icon: 'fa-flask',                label: 'Ciências'    },
+    portugues:   { cls: 'lit',     icon: 'fa-book',                 label: 'Português'   },
+    geografia:   { cls: 'geo',     icon: 'fa-earth-americas',       label: 'Geografia'   },
+    artes:       { cls: 'arts',    icon: 'fa-palette',              label: 'Artes'       },
+    'ed-fisica': { cls: 'phys',    icon: 'fa-person-running',       label: 'Ed. Física'  },
   };
 
   const DIFF_LABELS = { 1: 'Fácil', 2: 'Médio', 3: 'Difícil' };
-
-  let allGames     = [];
+  let allGames = [];
   let activeFilter = 'todos';
-  let searchQuery  = '';
+  let searchQuery = '';
   let activeSortFn = (a, b) => new Date(b.criado_em) - new Date(a.criado_em);
-  const PAGE_SIZE  = 9;
+  const PAGE_SIZE = 9;
   let visibleCount = PAGE_SIZE;
 
   function esc(str) {
-    return String(str)
-      .replace(/&/g,'&amp;').replace(/</g,'&lt;')
-      .replace(/>/g,'&gt;').replace(/"/g,'&quot;');
+    return String(str || '').replace(/&/g,'&amp;').replace(/</g,'&lt;').replace(/>/g,'&gt;').replace(/"/g,'&quot;');
   }
 
   function buildCard(g) {
-    const map  = THUMB_MAP[g.disciplina] || { cls: 'def', icon: 'fa-gamepad', label: g.disciplina || 'Geral' };
+    const map = THUMB_MAP[g.disciplina] || { cls: 'def', icon: 'fa-gamepad', label: g.disciplina || 'Geral' };
     const diff = Math.min(3, Math.max(1, g.dificuldade || 1));
     const dots = [1,2,3].map(n => `<span class="diff-dot${n <= diff ? ' on' : ''}"></span>`).join('');
     return `
@@ -356,40 +361,29 @@
       </article>`;
   }
 
-  function getFiltered() {
-    return allGames
+  function renderGrid() {
+    const filtered = allGames
       .filter(g => activeFilter === 'todos' || g.disciplina === activeFilter)
       .filter(g => {
         if (!searchQuery) return true;
         const q = searchQuery.toLowerCase();
-        return g.titulo.toLowerCase().includes(q)
-          || (g.descricao || '').toLowerCase().includes(q)
-          || (THUMB_MAP[g.disciplina]?.label || '').toLowerCase().includes(q);
+        return g.titulo.toLowerCase().includes(q) || (g.descricao || '').toLowerCase().includes(q);
       })
       .sort(activeSortFn);
-  }
 
-  function renderGrid() {
-    const filtered = getFiltered();
-    const grid     = document.getElementById('mgGrid');
-    const empty    = document.getElementById('mgEmpty');
+    const grid = document.getElementById('mgGrid');
+    const empty = document.getElementById('mgEmpty');
     const loadMore = document.getElementById('mgLoadMore');
 
-    document.getElementById('statTotal').textContent     = allGames.length;
-    document.getElementById('statJogadas').textContent   = allGames.reduce((s, g) => s + (g.partidas || 0), 0);
+    // Atualiza estatísticas
+    document.getElementById('statTotal').textContent = allGames.length;
+    document.getElementById('statJogadas').textContent = allGames.reduce((s, g) => s + (g.partidas || 0), 0);
     document.getElementById('statCriadores').textContent = [...new Set(allGames.map(g => g.criador_id))].length;
 
     if (filtered.length === 0) {
       grid.innerHTML = '';
       empty.style.display = 'block';
       loadMore.style.display = 'none';
-      if (searchQuery || activeFilter !== 'todos') {
-        document.getElementById('mgEmptyTitle').textContent = 'Nenhum resultado encontrado';
-        document.getElementById('mgEmptyDesc').textContent  = 'Tente outro termo de busca ou selecione uma disciplina diferente.';
-      } else {
-        document.getElementById('mgEmptyTitle').textContent = 'Nenhum Minigame disponível ainda';
-        document.getElementById('mgEmptyDesc').textContent  = 'Esta seção será preenchida assim que professores e coordenadores começarem a criar os primeiros Minigames da plataforma.';
-      }
       return;
     }
 
@@ -400,13 +394,17 @@
 
   async function fetchGames() {
     try {
-      const res  = await fetch('/api/minigames');
-      const data = await res.json();
-      if (data.ok && Array.isArray(data.minigames)) allGames = data.minigames;
-    } catch { allGames = []; }
+      const { data, error } = await supabase.from('minigames').select('*');
+      if (error) throw error;
+      allGames = Array.isArray(data) ? data : [];
+    } catch (err) {
+      console.error("Erro ao carregar:", err);
+      allGames = [];
+    }
     renderGrid();
   }
 
+  // Listeners de Eventos
   document.querySelectorAll('.mg-filter-btn').forEach(btn => {
     btn.addEventListener('click', function() {
       document.querySelectorAll('.mg-filter-btn').forEach(b => b.classList.remove('active'));
@@ -419,24 +417,23 @@
 
   document.getElementById('mgSearch').addEventListener('input', function() {
     searchQuery = this.value.trim();
-    visibleCount = PAGE_SIZE;
     renderGrid();
   });
 
   document.getElementById('mgSort').addEventListener('change', function() {
-    if (this.value === 'jogados')  activeSortFn = (a, b) => (b.partidas || 0) - (a.partidas || 0);
-    else if (this.value === 'az')  activeSortFn = (a, b) => a.titulo.localeCompare(b.titulo);
-    else                           activeSortFn = (a, b) => new Date(b.criado_em) - new Date(a.criado_em);
-    visibleCount = PAGE_SIZE;
+    if (this.value === 'jogados') activeSortFn = (a, b) => (b.partidas || 0) - (a.partidas || 0);
+    else if (this.value === 'az') activeSortFn = (a, b) => a.titulo.localeCompare(b.titulo);
+    else activeSortFn = (a, b) => new Date(b.criado_em) - new Date(a.criado_em);
     renderGrid();
   });
 
-  document.getElementById('btnLoadMore').addEventListener('click', function() {
+  document.getElementById('btnLoadMore').addEventListener('click', () => {
     visibleCount += PAGE_SIZE;
     renderGrid();
   });
 
-fetchGames()
+  // Inicia o carregamento
+  fetchGames();
 </script>
 
   <script>
