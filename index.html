@@ -528,7 +528,7 @@
   import { createClient } from 'https://jspm.dev/@supabase/supabase-js';
   const supabase = createClient('https://tkpatolybraskbedknjc.supabase.co', 'sb_publishable_hrQmBCRFxI0YhyCkk7SOzA_1BvyFC9U');
 
-  async function updateStats() {
+  async function initDashboard() {
     try {
       const [u, g, f] = await Promise.all([
         supabase.from('usuarios').select('*', { count: 'exact', head: true }),
@@ -536,22 +536,49 @@
         supabase.from('forum_posts').select('*', { count: 'exact', head: true })
       ]);
 
-      const updateEl = (id, val) => {
-        const el = document.getElementById(id);
-        if (el) el.textContent = val !== null ? val : 0;
-      };
+      if(document.getElementById('statUsers')) document.getElementById('statUsers').textContent = u.count || 0;
+      if(document.getElementById('statGames')) document.getElementById('statGames').textContent = g.count || 0;
+      if(document.getElementById('statForum')) document.getElementById('statForum').textContent = f.count || 0;
 
-      updateEl('statUsers', u.count);
-      updateEl('statGames', g.count);
-      updateEl('statForum', f.count);
+      if (g.count > 0) {
+        const { data: games } = await supabase.from('minigames').select('*').limit(3);
+        renderMinigames(games);
+      }
 
-      console.log("Stats atualizados:", { u: u.count, g: g.count, f: f.count });
+      if (f.count > 0) {
+        const { data: posts } = await supabase.from('forum_posts').select('*').limit(3);
+        renderForum(posts);
+      }
+
     } catch (err) {
-      console.error("Erro ao buscar dados:", err);
+      console.error("Erro na inicialização:", err);
     }
   }
 
-  window.addEventListener('DOMContentLoaded', updateStats);
+  function renderMinigames(games) {
+    const container = document.querySelector('#minigames .container');
+    const emptyState = document.querySelector('#minigames .empty-state');
+    if (emptyState) emptyState.style.display = 'none';
+
+    const grid = document.createElement('div');
+    grid.className = 'game-grid'; 
+    grid.innerHTML = games.map(g => `<div class="game-card"><h3>${g.titulo}</h3></div>`).join('');
+    container.appendChild(grid);
+  }
+
+  function renderForum(posts) {
+    const container = document.querySelector('#forum .forum-threads');
+    const emptyState = document.querySelector('#forum .empty-state');
+    if (emptyState) emptyState.style.display = 'none';
+
+    container.innerHTML = posts.map(p => `
+      <div class="thread-item">
+        <h4>${p.titulo}</h4>
+      </div>
+    `).join('');
+  }
+
+  window.addEventListener('DOMContentLoaded', initDashboard);
 </script>
 </body>
 </html>
