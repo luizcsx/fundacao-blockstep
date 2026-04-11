@@ -238,7 +238,7 @@
     .section-header p { color: var(--cei-muted); max-width: 560px; font-size: 15px; }
 
     .minigames-grid {
-      display: grid; grid-template-columns: repeat(3, 1fr); gap: 20px;
+      display: grid; grid-template-columns: repeat(3, 1fr); gap: 20px; width: 100%;
     }
     .game-card {
       border: 1px solid var(--cei-border); border-radius: 10px;
