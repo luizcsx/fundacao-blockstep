@@ -525,30 +525,36 @@
 
   async function updateDashboard() {
     try {
-      const { count: usersCount } = await supabase.from('usuarios').select('*', { count: 'exact', head: true });
-      const { count: gamesCount } = await supabase.from('minigames').select('*', { count: 'exact', head: true });
-      const { count: forumCount } = await supabase.from('forum_posts').select('*', { count: 'exact', head: true });
+      console.log("Iniciando busca...");
       
+      const { data: users, count: usersCount, error: errU } = await supabase.from('usuarios').select('*', { count: 'exact', head: true });
+      const { data: games, count: gamesCount, error: errG } = await supabase.from('minigames').select('*', { count: 'exact', head: true });
+      const { data: posts, count: forumCount, error: errF } = await supabase.from('forum_posts').select('*', { count: 'exact', head: true });
+
+      console.log("Resultados:", { usersCount, gamesCount, forumCount });
+      if (errU || errG || errF) console.error("Erro na consulta:", errU || errG || errF);
+
+      // aqui ele vai atualizar os renderizadores
       if(document.getElementById('statUsers')) document.getElementById('statUsers').textContent = usersCount || 0;
       if(document.getElementById('statGames')) document.getElementById('statGames').textContent = gamesCount || 0;
       if(document.getElementById('statForum')) document.getElementById('statForum').textContent = forumCount || 0;
 
       if (gamesCount > 0) {
         const gameSection = document.querySelector('#minigames .empty-state');
+        console.log("Minigame(s) encontrado(s):", !!gameSection);
         if (gameSection) gameSection.style.display = 'none';
       }
       
       if (forumCount > 0) {
         const forumSection = document.querySelector('#forum .empty-state');
+        console.log("Postagem(ns) encontrada(s):", !!forumSection);
         if (forumSection) forumSection.style.display = 'none';
       }
 
     } catch (err) {
-      console.error("Erro ao atualizar dashboard:", err);
+      console.error("Erro:", err);
     }
   }
-
-  updateDashboard();
 </script>
 </body>
 </html>
