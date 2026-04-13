@@ -1,0 +1,473 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Apoie o Projeto - Centro Educacional de Itaboraí</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800;900&display=swap" rel="stylesheet" />
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css" />
+  <link rel="stylesheet" href="/css/doacao1f.css" />
+  <link rel="icon" type="image/png" href="img/favicon.png">
+
+</head>
+<body>
+
+<div class="topbar" role="banner">
+  <div class="container">
+    <div class="topbar-left">
+      <span><i class="fa-solid fa-triangle-exclamation"></i> <strong>ATENÇÃO:</strong> Plataforma em fase de testes. Projeto não-oficial sem ligação com órgãos públicos municipais.</span>
+    </div>
+    <div class="topbar-right">
+      <div class="accessibility-bar" aria-label="Ferramentas de acessibilidade">
+        <button aria-label="Aumentar fonte" onclick="changeFontSize(1)"><i class="fa-solid fa-a"></i> A+</button>
+        <button aria-label="Diminuir fonte" onclick="changeFontSize(-1)"><i class="fa-solid fa-a"></i> A-</button>
+        <button aria-label="Alto contraste" onclick="toggleContrast()"><i class="fa-solid fa-circle-half-stroke"></i></button>
+      </div>
+      <a href="malito:centroeducacionaldeitaborai@gmail.com"><i class="fa-solid fa-envelope"></i> Contato</a>
+      <a href="suporte1f.html"><i class="fa-solid fa-circle-question"></i> Ajuda</a>
+    </div>
+  </div>
+</div>
+
+<header class="header" role="navigation" aria-label="Menu principal">
+  <div class="container">
+    <a href="index.html" class="logo" aria-label="Centro Educacional de Itaboraí">
+      <div class="logo-emblem" aria-hidden="true"></div>
+    </a>
+    <nav class="nav" aria-label="Navegação principal">
+      <a href="index.html"><i class="fa-solid fa-house"></i> Início</a>
+      <a href="minigames1f.html"><i class="fa-solid fa-gamepad"></i> Minigames</a>
+      <a href="forum1f.html"><i class="fa-solid fa-comments"></i> Fórum</a>
+      <a href="usuarios1f.html"><i class="fa-solid fa-user-circle"></i> Usuários</a>
+      <a href="sobre1f.html"><i class="fa-solid fa-circle-info"></i> Sobre</a>
+      <a href="ranking1f.html"><i class="fa-solid fa-trophy"></i> Ranking</a>
+    </nav>
+    <div class="header-actions">
+      <div class="search-bar" role="search">
+        <i class="fa-solid fa-magnifying-glass" aria-hidden="true"></i>
+        <input type="search" placeholder="Pesquisar..." aria-label="Pesquisar" />
+      </div>
+      <a href="entrar.html" class="btn btn-outline btn-login"><i class="fa-solid fa-right-to-bracket"></i> Entrar</a>
+      <a href="junte-se.html" class="btn btn-primary"><i class="fa-solid fa-user-plus"></i> Juntar-se</a>
+      <button class="hamburger" id="hamburgerBtn" aria-label="Abrir menu" aria-expanded="false">
+        <i class="fa-solid fa-bars"></i>
+      </button>
+    </div>
+  </div>
+</header>
+
+<div class="nav-drawer" id="navDrawer" role="dialog" aria-modal="true" aria-label="Menu de navegação">
+  <div class="drawer-overlay" id="drawerOverlay"></div>
+  <div class="drawer-panel">
+    <div class="drawer-header">
+      <div class="logo">
+        <div class="logo-emblem" style="width:38px;height:38px;" aria-hidden="true"></div>
+        <div class="logo-text"><span class="abbr"></span></div>
+      </div>
+      <button class="drawer-close" id="drawerClose" aria-label="Fechar menu"><i class="fa-solid fa-xmark"></i></button>
+    </div>
+    <nav class="drawer-nav">
+      <a href="index.html"><i class="fa-solid fa-house"></i> Início</a>
+      <a href="minigames1f.html"><i class="fa-solid fa-gamepad"></i> Minigames</a>
+      <a href="forum1f.html"><i class="fa-solid fa-comments"></i> Fórum</a>
+      <a href="usuarios1f.html"><i class="fa-solid fa-user-circle"></i> Usuários</a>
+      <a href="sobre1f.html"><i class="fa-solid fa-circle-info"></i> Sobre</a>
+      <a href="ranking1f.html"><i class="fa-solid fa-trophy"></i> Ranking</a>
+    </nav>
+    <div class="drawer-footer">
+      <a href="junte-se.html" class="btn btn-primary" style="width:100%;justify-content:center;"><i class="fa-solid fa-right-to-bracket"></i> Junte-se a nós!</a>
+    </div>
+  </div>
+</div>
+
+<section class="doa-hero" aria-label="Apoie o Projeto">
+  <div class="container">
+    <div class="doa-hero-inner">
+      <div class="doa-hero-text">
+        <div class="section-label"><i class="fa-solid fa-hand-holding-heart"></i> Apoie o Projeto</div>
+        <h1>Ajude a transformar<br>a educação em Itaboraí</h1>
+        <p>O Centro Educacional de Itaboraí é um projeto independente, sem fins lucrativos, desenvolvido por estudantes para estudantes. Sua doação mantém a plataforma no ar e financia novos recursos educacionais.</p>
+      </div>
+      <div class="doa-hero-impact" aria-label="Impacto do projeto">
+        <div class="doa-impact-item">
+          <div class="doa-impact-num">3</div>
+          <div class="doa-impact-lbl">Usuários</div>
+        </div>
+        <div class="doa-impact-item">
+          <div class="doa-impact-num">1</div>
+          <div class="doa-impact-lbl">Escola parceira</div>
+        </div>
+        <div class="doa-impact-item">
+          <div class="doa-impact-num">100%</div>
+          <div class="doa-impact-lbl">Independente</div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<main class="doa-main" role="main">
+  <div class="container">
+    <div class="doa-layout">
+
+      <div>
+        <div class="doa-card">
+          <div class="doa-card-head">
+            <div class="doa-card-head-icon nu"><i class="fas fa-donate" style="font-size:22px;"></i></div>
+            <div>
+              <h2>Doar via PIX · Nubank</h2>
+              <p>Transferência instantânea, sem taxas, direto pelo seu banco</p>
+            </div>
+          </div>
+          <div class="doa-card-body">
+
+            <p style="font-size:13px;color:var(--cei-muted);margin-bottom:18px;">Escolha um valor ou digite o que preferir:</p>
+
+            <div class="amount-grid" role="group" aria-label="Valores sugeridos">
+              <button class="amount-btn" data-value="5">R$ 5<span class="amount-label">Apoiador</span></button>
+              <button class="amount-btn selected" data-value="10">R$ 10<span class="amount-label">Colaborador</span></button>
+              <button class="amount-btn" data-value="20">R$ 20<span class="amount-label">Benfeitor</span></button>
+              <button class="amount-btn" data-value="50">R$ 50<span class="amount-label">Mantedor da Educação</span></button>
+              <button class="amount-btn" data-value="100">R$ 100<span class="amount-label">Patrono</span></button>
+              <button class="amount-btn" data-value="outro">Outro<span class="amount-label">Escolha o valor.</span></button>
+            </div>
+
+            <div class="amount-custom-wrap" id="customWrap" style="display:none;">
+              <label for="customAmount">Valor personalizado</label>
+              <div class="amount-custom-input">
+                <span class="prefix">R$</span>
+                <input type="number" id="customAmount" placeholder="0,00" min="1" max="9999" step="1" aria-label="Valor personalizado em reais" />
+              </div>
+            </div>
+
+            <div class="donor-field">
+              <label for="donorName">Seu nome <span style="color:var(--cei-muted);font-weight:400;">(opcional)</span></label>
+              <input type="text" id="donorName" placeholder="Como deseja ser reconhecido?" maxlength="80" />
+            </div>
+
+            <div class="anon-check">
+              <input type="checkbox" id="anonCheck" />
+              <label for="anonCheck">Quero ser um doador anônimo</label>
+            </div>
+
+            <button class="pix-btn" id="btnDonate">
+              <span class="pix-lbl"><i class="fa-solid fa-qrcode"></i> Gerar chave PIX</span>
+              <span class="pix-spin" aria-hidden="true"></span>
+            </button>
+
+            <p class="doa-note">
+              Ao clicar, você verá a chave PIX e o QR Code para realizar a transferência diretamente no seu banco ou app Nubank.<br>
+              Dúvidas? <a href="malito:centroeducacionaldeitaborai@gmail.com">Fale conosco</a>.
+            </p>
+
+          </div>
+        </div>
+      </div>
+
+      <aside class="doa-sidebar">
+
+        <div class="doa-info-card">
+          <h3><i class="fa-solid fa-bullseye"></i> Para onde vai sua doação?</h3>
+          <div class="doa-use-item">
+            <div class="doa-use-icon"><i class="fa-solid fa-server"></i></div>
+            <div class="doa-use-text">
+              <h5>Infraestrutura</h5>
+              <p>Hospedagem, banco de dados e domínio para manter a plataforma no ar.</p>
+            </div>
+          </div>
+          <div class="doa-use-item">
+            <div class="doa-use-icon"><i class="fa-solid fa-gamepad"></i></div>
+            <div class="doa-use-text">
+              <h5>Novos Minigames</h5>
+              <p>Desenvolvimento de mais jogos educativos para todas as disciplinas.</p>
+            </div>
+          </div>
+          <div class="doa-use-item">
+            <div class="doa-use-icon"><i class="fa-solid fa-wand-magic-sparkles"></i></div>
+            <div class="doa-use-text">
+              <h5>Melhorias na plataforma</h5>
+              <p>Novos recursos, acessibilidade e experiência de usuário aprimorada.</p>
+            </div>
+          </div>
+          <div class="doa-use-item">
+            <div class="doa-use-icon"><i class="fa-solid fa-graduation-cap"></i></div>
+            <div class="doa-use-text">
+              <h5>Material educacional</h5>
+              <p>Produção de conteúdo pedagógico digital para professores e alunos.</p>
+            </div>
+          </div>
+        </div>
+
+        <div class="doa-info-card">
+          <h3><i class="fa-solid fa-shield-halved"></i> Sua segurança em primeiro lugar.</h3>
+          <div class="doa-trust-item"><i class="fa-solid fa-check-circle"></i> Nenhum dado bancário coletado.</div>
+          <div class="doa-trust-item"><i class="fa-solid fa-check-circle"></i> Transferência direta pelo seu banco.</div>
+          <div class="doa-trust-item"><i class="fa-solid fa-check-circle"></i> Não armazenamos seu CPF ou senha.</div>
+          <div class="doa-trust-item"><i class="fa-solid fa-check-circle"></i> PIX é regulamentado pelo Banco Central.</div>
+          <div class="doa-trust-item"><i class="fa-solid fa-check-circle"></i> Projeto 100% transparente e independente.</div>
+        </div>
+
+      </aside>
+    </div>
+  </div>
+</main>
+
+<div class="pix-modal-overlay" id="pixModal" role="dialog" aria-modal="true" aria-label="Chave PIX para doação">
+  <div class="pix-modal">
+    <div class="pix-modal-head">
+      <h3><i class="fa-solid fa-check-circle"></i> Chave PIX gerada!</h3>
+      <button class="pix-modal-close" id="pixModalClose" aria-label="Fechar"><i class="fa-solid fa-xmark"></i></button>
+    </div>
+    <div class="pix-modal-body">
+      <p class="pix-modal-amount">Você está doando</p>
+      <p class="pix-modal-value" id="pixModalValue">R$ 10,00</p>
+
+      <div class="pix-qr-area" aria-label="QR Code PIX (será adicionado em breve)">
+        <i class="fa-solid fa-qrcode qr-placeholder-icon"></i>
+        <span class="qr-placeholder-txt">QR Code disponível em breve</span>
+      </div>
+
+      <div class="pix-key-box">
+        <div class="pix-key-label">Chave PIX</div>
+        <div class="pix-key-value" id="pixKeyValue">A ser adicionado</div>
+        <div class="pix-key-type" id="pixKeyType">Tipo: E-mail · Nubank</div>
+      </div>
+
+      <button class="pix-copy-btn" id="btnCopyPix">
+        <i class="fa-solid fa-copy"></i> Copiar chave PIX
+      </button>
+
+      <p class="pix-modal-note">
+        Abra o seu banco ou o <strong>app Nubank</strong>, acesse <strong>Área PIX → Transferir</strong>, cole a chave acima e confirme o valor de <strong id="pixModalNote">R$ 10,00</strong>. Obrigado pelo seu apoio!
+      </p>
+    </div>
+  </div>
+</div>
+
+<footer class="footer" role="contentinfo">
+  <div class="footer-main">
+    <div class="container">
+      <div class="footer-grid">
+        <div class="footer-brand">
+          <div class="logo">
+            <div class="logo-emblem" aria-hidden="true"></div>
+            <div class="logo-text">
+              <span class="abbr">"O amanhã, hoje."</span>
+              <span class="full"><i>- Luiz Miguel</i></span>
+            </div>
+          </div>
+          <p>Plataforma pedagógica digital desenvolvida para fortalecer o ensino e a aprendizagem nas escolas municipais de Itaboraí, Rio de Janeiro.</p>
+          <div class="footer-socials" aria-label="Redes sociais">
+            <a href="https://www.youtube.com/@CentroEducacionaldeItaboraí" aria-label="Nosso YouTube"><i class="fa-brands fa-youtube"></i></a>
+            <a href="https://instagram.com/centroeducacionaldeitaborai" aria-label="Nosso Instagram"><i class="fa-brands fa-instagram"></i></a>
+            <a href="malito:centroeducacionaldeitaborai@gmail.com" aria-label="Nosso Contato"><i class="fa-solid fa-envelope"></i></a>
+          </div>
+        </div>
+        <div class="footer-col">
+          <h5>Plataforma</h5>
+          <ul>
+            <li><a href="index.html"><i class="fa-solid fa-house"></i> Início</a></li>
+            <li><a href="minigames1f.html"><i class="fa-solid fa-gamepad"></i> Minigames</a></li>
+            <li><a href="forum1f.html"><i class="fa-solid fa-comments"></i> Fórum</a></li>
+            <li><a href="ranking1f.html"><i class="fa-solid fa-trophy"></i> Ranking</a></li>
+            <li><a href="usuarios1f.html"><i class="fa-solid fa-user-circle"></i> Usuários</a></li>
+            <li><a href="calendario1f.html"><i class="fa-solid fa-calendar-days"></i> Calendário</a></li>
+            <li><a href="doacao1f.html"><i class="fa-solid fa-hand-holding-heart"></i> Apoie este projeto</a></li>
+          </ul>
+        </div>
+        <div class="footer-col">
+          <h5>Acesso</h5>
+          <ul>
+            <li><a href="entrar.html"><i class="fa-solid fa-right-to-bracket"></i> Entrar</a></li>
+            <li><a href="junte-se.html"><i class="fa-solid fa-user-plus"></i> Juntar-se</a></li>
+            <li><a href="privacidade1f.html"><i class="fa-solid fa-shield-halved"></i> Privacidade</a></li>
+            <li><a href="termos1f.html"><i class="fa-solid fa-file-contract"></i> Termos de uso</a></li>
+            <li><a href="suporte1f.html"><i class="fa-solid fa-headset"></i> Suporte</a></li>
+          </ul>
+        </div>
+        <div class="footer-col">
+          <h5>Institucional</h5>
+          <ul>
+            <li><a href="sobre1f.html"><i class="fa-solid fa-circle-info"></i> Sobre Nós</a></li>
+            <li><a href="https://site.ib.itaborai.rj.gov.br/orgaos_municipais/educacao/"><i class="fa-solid fa-school"></i> Secretaria de Educação</a></li>
+            <li><a href="https://site.ib.itaborai.rj.gov.br"><i class="fa-solid fa-landmark"></i> Prefeitura de Itaboraí</a></li>
+            <li><a href="acessibilidade1f.html"><i class="fa-solid fa-universal-access"></i> Acessibilidade</a></li>
+            <li><a href="malito:centroeducacionaldeitaborai@gmail.com"><i class="fa-solid fa-envelope"></i> Contato</a></li>
+          </ul>
+        </div>
+      </div>
+    </div>
+  </div>
+  <div class="footer-bottom">
+    <div class="container">
+      <p>&copy; <span id="currentYear"></span> <span class="gold">Centro Educacional de Itaboraí</span>. Todos os direitos reservados.</p>
+    </div>
+  </div>
+</footer>
+
+<button class="vlibras-btn" id="vlibrasBtn" aria-label="Ativar VLibras – Tradução em Libras">
+  <i class="fa-solid fa-hands"></i>
+</button>
+<div class="vlibras-tooltip" aria-hidden="true">Ativar VLibras</div>
+
+<div vw class="enabled">
+  <div vw-access-button class="active"></div>
+  <div vw-plugin-wrapper><div class="vw-plugin-top-wrapper"></div></div>
+</div>
+<script src="https://vlibras.gov.br/app/vlibras-plugin.js"></script>
+<script>new window.VLibras.Widget('https://vlibras.gov.br/app');</script>
+
+<script>
+  document.getElementById('currentYear').textContent = new Date().getFullYear();
+
+  const hamburger = document.getElementById('hamburgerBtn');
+  const drawer    = document.getElementById('navDrawer');
+  const overlay   = document.getElementById('drawerOverlay');
+  const closeBtn  = document.getElementById('drawerClose');
+  function openDrawer()  { drawer.classList.add('open'); hamburger.setAttribute('aria-expanded','true'); document.body.style.overflow='hidden'; }
+  function closeDrawer() { drawer.classList.remove('open'); hamburger.setAttribute('aria-expanded','false'); document.body.style.overflow=''; }
+  hamburger.addEventListener('click', openDrawer);
+  overlay.addEventListener('click', closeDrawer);
+  closeBtn.addEventListener('click', closeDrawer);
+  drawer.querySelectorAll('a').forEach(a => a.addEventListener('click', closeDrawer));
+
+  let fontSize = parseInt(localStorage.getItem('cei_fontsize') || '15', 10);
+  const FONT_MIN = 12, FONT_MAX = 22;
+  function applyFontSize() {
+    document.body.style.fontSize = fontSize + 'px';
+    document.querySelectorAll('.accessibility-bar button').forEach(btn => {
+      if (btn.getAttribute('aria-label') === 'Aumentar fonte') btn.disabled = fontSize >= FONT_MAX;
+      if (btn.getAttribute('aria-label') === 'Diminuir fonte') btn.disabled = fontSize <= FONT_MIN;
+    });
+  }
+  function changeFontSize(delta) {
+    fontSize = Math.min(FONT_MAX, Math.max(FONT_MIN, fontSize + delta));
+    localStorage.setItem('cei_fontsize', fontSize);
+    applyFontSize();
+  }
+  applyFontSize();
+
+  function toggleContrast() {
+    document.documentElement.classList.toggle('high-contrast');
+    const hc = document.documentElement.classList.contains('high-contrast');
+    if (hc) {
+      document.documentElement.style.setProperty('--cei-white','#000');
+      document.documentElement.style.setProperty('--cei-text','#fff');
+      document.documentElement.style.setProperty('--cei-gray','#111');
+      document.documentElement.style.setProperty('--cei-border','#555');
+      document.documentElement.style.setProperty('--cei-muted','#ccc');
+    } else {
+      ['--cei-white','--cei-text','--cei-gray','--cei-border','--cei-muted'].forEach(v =>
+        document.documentElement.style.removeProperty(v)
+      );
+    }
+  }
+
+  document.getElementById('vlibrasBtn').addEventListener('click', function() {
+    const accessBtn = document.querySelector('[vw-access-button]');
+    if (accessBtn) { accessBtn.style.display = 'flex'; accessBtn.click(); accessBtn.style.display = 'none'; }
+  });
+
+  const PIX_CONFIG = {
+    chave:      'A_SER_ADICIONADO',
+    tipo:       'E-mail · Nubank',
+    favorecido: 'Centro Educacional de Itaboraí',
+  };
+
+  let selectedValue = 10;
+
+  document.querySelectorAll('.amount-btn').forEach(btn => {
+    btn.addEventListener('click', function() {
+      document.querySelectorAll('.amount-btn').forEach(b => b.classList.remove('selected'));
+      this.classList.add('selected');
+      const val = this.dataset.value;
+      const customWrap = document.getElementById('customWrap');
+      if (val === 'outro') {
+        customWrap.style.display = 'block';
+        document.getElementById('customAmount').focus();
+        selectedValue = null;
+      } else {
+        customWrap.style.display = 'none';
+        selectedValue = parseFloat(val);
+      }
+    });
+  });
+
+  document.getElementById('customAmount').addEventListener('input', function() {
+    selectedValue = parseFloat(this.value) || null;
+  });
+
+  document.getElementById('anonCheck').addEventListener('change', function() {
+    const nameField = document.getElementById('donorName');
+    nameField.disabled = this.checked;
+    if (this.checked) nameField.value = '';
+  });
+
+  function formatBRL(val) {
+    return val.toLocaleString('pt-BR', { style: 'currency', currency: 'BRL' });
+  }
+
+  document.getElementById('btnDonate').addEventListener('click', async function() {
+    if (!selectedValue || selectedValue < 1) {
+      alert('Por favor, escolha ou digite um valor mínimo de R$ 1,00.');
+      return;
+    }
+
+    this.classList.add('loading');
+    this.disabled = true;
+
+    await new Promise(r => setTimeout(r, 800));
+
+    this.classList.remove('loading');
+    this.disabled = false;
+
+    const formatted = formatBRL(selectedValue);
+    document.getElementById('pixModalValue').textContent = formatted;
+    document.getElementById('pixModalNote').textContent  = formatted;
+    document.getElementById('pixKeyValue').textContent   = PIX_CONFIG.chave;
+    document.getElementById('pixKeyType').textContent    = `Tipo: ${PIX_CONFIG.tipo} · Favorecido: ${PIX_CONFIG.favorecido}`;
+
+    document.getElementById('pixModal').classList.add('open');
+    document.body.style.overflow = 'hidden';
+  });
+
+  document.getElementById('pixModalClose').addEventListener('click', () => {
+    document.getElementById('pixModal').classList.remove('open');
+    document.body.style.overflow = '';
+  });
+  document.getElementById('pixModal').addEventListener('click', e => {
+    if (e.target === document.getElementById('pixModal')) {
+      document.getElementById('pixModal').classList.remove('open');
+      document.body.style.overflow = '';
+    }
+  });
+
+  document.getElementById('btnCopyPix').addEventListener('click', function() {
+    const key = PIX_CONFIG.chave;
+    navigator.clipboard.writeText(key).then(() => {
+      this.innerHTML = '<i class="fa-solid fa-check"></i> Copiado!';
+      this.classList.add('copied');
+      setTimeout(() => {
+        this.innerHTML = '<i class="fa-solid fa-copy"></i> Copiar chave PIX';
+        this.classList.remove('copied');
+      }, 2500);
+    }).catch(() => {
+      const ta = document.createElement('textarea');
+      ta.value = key;
+      document.body.appendChild(ta);
+      ta.select();
+      document.execCommand('copy');
+      document.body.removeChild(ta);
+      this.innerHTML = '<i class="fa-solid fa-check"></i> Copiado!';
+      this.classList.add('copied');
+      setTimeout(() => {
+        this.innerHTML = '<i class="fa-solid fa-copy"></i> Copiar chave PIX';
+        this.classList.remove('copied');
+      }, 2500);
+    });
+  });
+</script>
+</body>
+</html>
