@@ -1,0 +1,546 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Usuários - Centro Educacional de Itaboraí</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800;900&display=swap" rel="stylesheet" />
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css" />
+
+</head>
+<body>
+
+<div class="topbar" role="banner">
+  <div class="container">
+    <div class="topbar-left">
+      <span><i class="fa-solid fa-triangle-exclamation"></i> <strong>ATENÇÃO:</strong> Plataforma em fase de testes. Projeto não-oficial sem ligação com órgãos públicos municipais.</span>
+    </div>
+    <div class="topbar-right">
+      <div class="accessibility-bar" aria-label="Ferramentas de acessibilidade">
+        <button aria-label="Aumentar fonte" onclick="changeFontSize(1)"><i class="fa-solid fa-a"></i> A+</button>
+        <button aria-label="Diminuir fonte" onclick="changeFontSize(-1)"><i class="fa-solid fa-a"></i> A-</button>
+        <button aria-label="Alto contraste" onclick="toggleContrast()"><i class="fa-solid fa-circle-half-stroke"></i></button>
+      </div>
+      <a href="malito:centroeducacionaldeitaborai@gmail.com"><i class="fa-solid fa-envelope"></i> Contato</a>
+      <a href="suporte1f.html"><i class="fa-solid fa-circle-question"></i> Ajuda</a>
+    </div>
+  </div>
+</div>
+
+<header class="header" role="navigation" aria-label="Menu principal">
+  <div class="container">
+    <a href="index.html" class="logo" aria-label="Centro Educacional de Itaboraí">
+      <div class="logo-emblem" aria-hidden="true"></div>
+    </a>
+    <nav class="nav" aria-label="Navegação principal">
+      <a href="index.html"><i class="fa-solid fa-house"></i> Início</a>
+      <a href="minigames1f.html"><i class="fa-solid fa-gamepad"></i> Minigames</a>
+      <a href="forum1f.html"><i class="fa-solid fa-comments"></i> Fórum</a>
+      <a href="usuarios1f.html" class="active"><i class="fa-solid fa-user-circle"></i> Usuários</a>
+      <a href="sobre1f.html"><i class="fa-solid fa-circle-info"></i> Sobre</a>
+      <a href="ranking1f.html"><i class="fa-solid fa-trophy"></i> Ranking</a>
+    </nav>
+    <div class="header-actions">
+      <div class="search-bar" role="search">
+        <i class="fa-solid fa-magnifying-glass" aria-hidden="true"></i>
+        <input type="search" placeholder="Pesquisar..." aria-label="Pesquisar" />
+      </div>
+      <a href="entrar.html" class="btn btn-outline btn-login"><i class="fa-solid fa-right-to-bracket"></i> Entrar</a>
+      <a href="junte-se.html" class="btn btn-primary"><i class="fa-solid fa-user-plus"></i> Juntar-se</a>
+      <button class="hamburger" id="hamburgerBtn" aria-label="Abrir menu" aria-expanded="false">
+        <i class="fa-solid fa-bars"></i>
+      </button>
+    </div>
+  </div>
+</header>
+
+<div class="nav-drawer" id="navDrawer" role="dialog" aria-modal="true" aria-label="Menu de navegação">
+  <div class="drawer-overlay" id="drawerOverlay"></div>
+  <div class="drawer-panel">
+    <div class="drawer-header">
+      <div class="logo">
+        <div class="logo-emblem" style="width:38px;height:38px;" aria-hidden="true"></div>
+        <div class="logo-text"><span class="abbr"></span></div>
+      </div>
+      <button class="drawer-close" id="drawerClose" aria-label="Fechar menu"><i class="fa-solid fa-xmark"></i></button>
+    </div>
+    <nav class="drawer-nav">
+      <a href="index.html"><i class="fa-solid fa-house"></i> Início</a>
+      <a href="minigames1f.html"><i class="fa-solid fa-gamepad"></i> Minigames</a>
+      <a href="forum1f.html"><i class="fa-solid fa-comments"></i> Fórum</a>
+      <a href="usuarios1f.html"><i class="fa-solid fa-user-circle"></i> Usuários</a>
+      <a href="sobre1f.html"><i class="fa-solid fa-circle-info"></i> Sobre</a>
+      <a href="ranking1f.html"><i class="fa-solid fa-trophy"></i> Ranking</a>
+    </nav>
+    <div class="drawer-footer">
+      <a href="junte-se.html" class="btn btn-primary" style="width:100%;justify-content:center;"><i class="fa-solid fa-right-to-bracket"></i> Junte-se a nós!</a>
+    </div>
+  </div>
+</div>
+
+<section class="usuarios-hero" aria-label="Usuários">
+  <div class="container">
+    <div class="usuarios-hero-inner">
+      <div class="usuarios-hero-text">
+        <div class="section-label"><i class="fa-solid fa-user-circle"></i> Comunidade</div>
+        <h1>Usuários da Plataforma</h1>
+        <p>Conheça os professores, coordenadores e alunos que fazem parte do Centro Educacional de Itaboraí.</p>
+      </div>
+      <div class="usuarios-hero-stats" aria-label="Estatísticas">
+        <div class="ustat">
+          <div class="ustat-num" id="statTotal">0</div>
+          <div class="ustat-lbl">Usuários</div>
+        </div>
+        <div class="ustat">
+          <div class="ustat-num" id="statProfessores">0</div>
+          <div class="ustat-lbl">Professores</div>
+        </div>
+        <div class="ustat">
+          <div class="ustat-num" id="statAlunos">0</div>
+          <div class="ustat-lbl">Alunos</div>
+        </div>
+        <div class="ustat">
+          <div class="ustat-num" id="statEscolas">0</div>
+          <div class="ustat-lbl">Escolas</div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<div class="usuarios-toolbar" aria-label="Filtros de usuários">
+  <div class="container">
+    <div class="toolbar-left">
+      <div class="usearch-wrap" role="search">
+        <i class="fa-solid fa-magnifying-glass" aria-hidden="true"></i>
+        <input type="search" id="userSearch" placeholder="Buscar por nome ou username..." aria-label="Buscar usuário" />
+      </div>
+      <div class="role-filter" role="group" aria-label="Filtrar por papel">
+        <button class="role-btn active" data-role="">Todos</button>
+        <button class="role-btn" data-role="aluno">Alunos</button>
+        <button class="role-btn" data-role="professor">Professores</button>
+        <button class="role-btn" data-role="coordenador">Coordenadores</button>
+        <button class="role-btn" data-role="orientador">Orientadores</button>
+        <button class="role-btn" data-role="admin">Admins</button>
+      </div>
+      <select class="sort-sel" id="userSort" aria-label="Ordenar por">
+        <option value="recentes">Mais recentes</option>
+        <option value="az">A–Z</option>
+        <option value="pontos">Mais pontos</option>
+      </select>
+    </div>
+    <span class="user-count" aria-live="polite">
+      <i class="fa-solid fa-users"></i> <span id="userCountNum">0</span> usuário(s)
+    </span>
+  </div>
+</div>
+
+<main class="usuarios-main" role="main">
+  <div class="container">
+    <div class="usuarios-grid" id="usuariosGrid" aria-label="Lista de usuários" aria-live="polite">
+      <div class="user-skeleton"><div class="skel" style="height:60px;border-radius:0;"></div><div style="padding:0 18px 18px;display:flex;flex-direction:column;align-items:center;gap:8px;"><div class="skel" style="width:64px;height:64px;border-radius:50%;margin-top:-32px;"></div><div class="skel" style="height:14px;width:70%;"></div><div class="skel" style="height:12px;width:50%;"></div><div class="skel" style="height:22px;width:60%;border-radius:999px;"></div></div></div>
+      <div class="user-skeleton"><div class="skel" style="height:60px;border-radius:0;"></div><div style="padding:0 18px 18px;display:flex;flex-direction:column;align-items:center;gap:8px;"><div class="skel" style="width:64px;height:64px;border-radius:50%;margin-top:-32px;"></div><div class="skel" style="height:14px;width:65%;"></div><div class="skel" style="height:12px;width:45%;"></div><div class="skel" style="height:22px;width:55%;border-radius:999px;"></div></div></div>
+      <div class="user-skeleton"><div class="skel" style="height:60px;border-radius:0;"></div><div style="padding:0 18px 18px;display:flex;flex-direction:column;align-items:center;gap:8px;"><div class="skel" style="width:64px;height:64px;border-radius:50%;margin-top:-32px;"></div><div class="skel" style="height:14px;width:75%;"></div><div class="skel" style="height:12px;width:55%;"></div><div class="skel" style="height:22px;width:50%;border-radius:999px;"></div></div></div>
+      <div class="user-skeleton"><div class="skel" style="height:60px;border-radius:0;"></div><div style="padding:0 18px 18px;display:flex;flex-direction:column;align-items:center;gap:8px;"><div class="skel" style="width:64px;height:64px;border-radius:50%;margin-top:-32px;"></div><div class="skel" style="height:14px;width:60%;"></div><div class="skel" style="height:12px;width:40%;"></div><div class="skel" style="height:22px;width:65%;border-radius:999px;"></div></div></div>
+    </div>
+    <div class="load-more-wrap" id="loadMoreWrap" style="display:none;">
+      <button class="btn btn-outline" id="btnLoadMore"><i class="fa-solid fa-chevron-down"></i> Carregar mais</button>
+    </div>
+  </div>
+</main>
+
+<div class="profile-overlay" id="profileOverlay" role="dialog" aria-modal="true" aria-label="Perfil do usuário">
+  <div class="profile-box" id="profileBox">
+    <div class="profile-banner" id="profileBanner"></div>
+    <button class="profile-close" id="profileClose" aria-label="Fechar perfil"><i class="fa-solid fa-xmark"></i></button>
+    <div class="profile-header">
+      <div class="profile-avatar" id="profileAvatar"></div>
+      <h2 class="profile-name"    id="profileName"></h2>
+      <p  class="profile-username" id="profileUsername"></p>
+      <div class="profile-badges" id="profileBadges"></div>
+    </div>
+    <div class="profile-body">
+      <div class="profile-info-grid">
+        <div class="profile-info-item">
+          <div class="profile-info-lbl">Escola</div>
+          <div class="profile-info-val"><i class="fa-solid fa-school"></i> <span id="profileEscola">—</span></div>
+        </div>
+        <div class="profile-info-item">
+          <div class="profile-info-lbl">Papel</div>
+          <div class="profile-info-val"><i class="fa-solid fa-id-badge"></i> <span id="profileRole">—</span></div>
+        </div>
+        <div class="profile-info-item">
+          <div class="profile-info-lbl">Membro desde</div>
+          <div class="profile-info-val"><i class="fa-regular fa-calendar"></i> <span id="profileSince">—</span></div>
+        </div>
+        <div class="profile-info-item">
+          <div class="profile-info-lbl">Última atividade</div>
+          <div class="profile-info-val"><i class="fa-regular fa-clock"></i> <span id="profileActive">—</span></div>
+        </div>
+      </div>
+      <div class="profile-stats">
+        <div class="profile-stat">
+          <div class="profile-stat-num" id="profilePontos">0</div>
+          <div class="profile-stat-lbl">Pontos</div>
+        </div>
+        <div class="profile-stat">
+          <div class="profile-stat-num" id="profileMinigames">0</div>
+          <div class="profile-stat-lbl">Minigames</div>
+        </div>
+        <div class="profile-stat">
+          <div class="profile-stat-num" id="profileTopicos">0</div>
+          <div class="profile-stat-lbl">Tópicos</div>
+        </div>
+      </div>
+      <div class="profile-actions">
+        <a href="forum1f.html" class="btn btn-outline" style="font-size:13px;padding:8px 16px;"><i class="fa-solid fa-comments"></i> Ver tópicos</a>
+      </div>
+    </div>
+  </div>
+</div>
+
+<footer class="footer" role="contentinfo">
+  <div class="footer-main">
+    <div class="container">
+      <div class="footer-grid">
+        <div class="footer-brand">
+          <div class="logo">
+            <div class="logo-emblem" aria-hidden="true"></div>
+            <div class="logo-text">
+              <span class="abbr">"O amanhã, hoje."</span>
+              <span class="full"><i>- Luiz Miguel</i></span>
+            </div>
+          </div>
+          <p>Plataforma pedagógica digital desenvolvida para fortalecer o ensino e a aprendizagem nas escolas municipais de Itaboraí, Rio de Janeiro.</p>
+          <div class="footer-socials" aria-label="Redes sociais">
+            <a href="https://www.youtube.com/@CentroEducacionaldeItaboraí" aria-label="YouTube"><i class="fa-brands fa-youtube"></i></a>
+            <a href="https://instagram.com/centroeducacionaldeitaborai" aria-label="Instagram"><i class="fa-brands fa-instagram"></i></a>
+            <a href="malito:centroeducacionaldeitaborai@gmail.com" aria-label="Contato"><i class="fa-solid fa-envelope"></i></a>
+          </div>
+        </div>
+        <div class="footer-col">
+          <h5>Plataforma</h5>
+          <ul>
+            <li><a href="index.html"><i class="fa-solid fa-house"></i> Início</a></li>
+            <li><a href="minigames1f.html"><i class="fa-solid fa-gamepad"></i> Minigames</a></li>
+            <li><a href="forum1f.html"><i class="fa-solid fa-comments"></i> Fórum</a></li>
+            <li><a href="ranking1f.html"><i class="fa-solid fa-trophy"></i> Ranking</a></li>
+            <li><a href="usuarios1f.html"><i class="fa-solid fa-user-circle"></i> Usuários</a></li>
+            <li><a href="calendario1f.html"><i class="fa-solid fa-calendar-days"></i> Calendário</a></li>
+            <li><a href="doacao1f.html"><i class="fa-solid fa-hand-holding-heart"></i> Apoie este projeto</a></li>
+          </ul>
+        </div>
+        <div class="footer-col">
+          <h5>Acesso</h5>
+          <ul>
+            <li><a href="entrar.html"><i class="fa-solid fa-right-to-bracket"></i> Entrar</a></li>
+            <li><a href="junte-se.html"><i class="fa-solid fa-user-plus"></i> Juntar-se</a></li>
+            <li><a href="privacidade1f.html"><i class="fa-solid fa-shield-halved"></i> Privacidade</a></li>
+            <li><a href="termos1f.html"><i class="fa-solid fa-file-contract"></i> Termos de uso</a></li>
+            <li><a href="suporte1f.html"><i class="fa-solid fa-headset"></i> Suporte</a></li>
+          </ul>
+        </div>
+        <div class="footer-col">
+          <h5>Institucional</h5>
+          <ul>
+            <li><a href="sobre1f.html"><i class="fa-solid fa-circle-info"></i> Sobre Nós</a></li>
+            <li><a href="https://site.ib.itaborai.rj.gov.br/orgaos_municipais/educacao/"><i class="fa-solid fa-school"></i> Secretaria de Educação</a></li>
+            <li><a href="https://site.ib.itaborai.rj.gov.br"><i class="fa-solid fa-landmark"></i> Prefeitura de Itaboraí</a></li>
+            <li><a href="acessibilidade1f.html"><i class="fa-solid fa-universal-access"></i> Acessibilidade</a></li>
+            <li><a href="malito:centroeducacionaldeitaborai@gmail.com"><i class="fa-solid fa-envelope"></i> Contato</a></li>
+          </ul>
+        </div>
+      </div>
+    </div>
+  </div>
+  <div class="footer-bottom">
+    <div class="container">
+      <p>&copy; <span id="currentYear"></span> <span class="gold">Centro Educacional de Itaboraí</span>. Todos os direitos reservados.</p>
+    </div>
+  </div>
+</footer>
+
+<button class="vlibras-btn" id="vlibrasBtn" aria-label="Ativar VLibras – Tradução em Libras">
+  <i class="fa-solid fa-hands"></i>
+</button>
+<div class="vlibras-tooltip" aria-hidden="true">Ativar VLibras</div>
+
+<div vw class="enabled">
+  <div vw-access-button class="active"></div>
+  <div vw-plugin-wrapper><div class="vw-plugin-top-wrapper"></div></div>
+</div>
+<script src="https://vlibras.gov.br/app/vlibras-plugin.js"></script>
+<script>new window.VLibras.Widget('https://vlibras.gov.br/app');</script>
+
+<script>
+  const SUPABASE_URL = 'SUPABASE_URL_AQUI';
+  const SUPABASE_KEY = 'SUPABASE_ANON_KEY_AQUI';
+
+  async function sbFetch(path, opts = {}) {
+    const res = await fetch(SUPABASE_URL + '/rest/v1/' + path, {
+      headers: {
+        'apikey': SUPABASE_KEY,
+        'Authorization': 'Bearer ' + SUPABASE_KEY,
+        'Content-Type': 'application/json',
+        'Prefer': 'return=representation',
+        ...opts.headers,
+      },
+      ...opts,
+    });
+    if (!res.ok) throw new Error(await res.text());
+    const t = await res.text();
+    return t ? JSON.parse(t) : null;
+  }
+
+  document.getElementById('currentYear').textContent = new Date().getFullYear();
+
+  const hamburger = document.getElementById('hamburgerBtn');
+  const drawer    = document.getElementById('navDrawer');
+  const overlay   = document.getElementById('drawerOverlay');
+  const closeBtn  = document.getElementById('drawerClose');
+  function openDrawer()  { drawer.classList.add('open'); hamburger.setAttribute('aria-expanded','true'); document.body.style.overflow='hidden'; }
+  function closeDrawer() { drawer.classList.remove('open'); hamburger.setAttribute('aria-expanded','false'); document.body.style.overflow=''; }
+  hamburger.addEventListener('click', openDrawer);
+  overlay.addEventListener('click', closeDrawer);
+  closeBtn.addEventListener('click', closeDrawer);
+  drawer.querySelectorAll('a').forEach(a => a.addEventListener('click', closeDrawer));
+
+  let fontSize = parseInt(localStorage.getItem('cei_fontsize') || '15', 10);
+  const FONT_MIN = 12, FONT_MAX = 22;
+  function applyFontSize() {
+    document.body.style.fontSize = fontSize + 'px';
+    document.querySelectorAll('.accessibility-bar button').forEach(btn => {
+      if (btn.getAttribute('aria-label') === 'Aumentar fonte') btn.disabled = fontSize >= FONT_MAX;
+      if (btn.getAttribute('aria-label') === 'Diminuir fonte') btn.disabled = fontSize <= FONT_MIN;
+    });
+  }
+  function changeFontSize(delta) {
+    fontSize = Math.min(FONT_MAX, Math.max(FONT_MIN, fontSize + delta));
+    localStorage.setItem('cei_fontsize', fontSize);
+    applyFontSize();
+  }
+  applyFontSize();
+
+  function toggleContrast() {
+    document.documentElement.classList.toggle('high-contrast');
+    const hc = document.documentElement.classList.contains('high-contrast');
+    if (hc) {
+      document.documentElement.style.setProperty('--cei-white','#000');
+      document.documentElement.style.setProperty('--cei-text','#fff');
+      document.documentElement.style.setProperty('--cei-gray','#111');
+      document.documentElement.style.setProperty('--cei-border','#555');
+      document.documentElement.style.setProperty('--cei-muted','#ccc');
+    } else {
+      ['--cei-white','--cei-text','--cei-gray','--cei-border','--cei-muted'].forEach(v =>
+        document.documentElement.style.removeProperty(v)
+      );
+    }
+  }
+
+  document.getElementById('vlibrasBtn').addEventListener('click', function() {
+    const ab = document.querySelector('[vw-access-button]');
+    if (ab) { ab.style.display = 'flex'; ab.click(); ab.style.display = 'none'; }
+  });
+
+  const ROLE_LABELS = { aluno: 'Aluno', professor: 'Professor', coordenador: 'Coordenador', orientador: 'Orientador', admin: 'Administrador' };
+  const ROLE_CLS    = { aluno: 'role-aluno', professor: 'role-professor', coordenador: 'role-coordenador', orientador: 'role-orientador', admin: 'role-admin' };
+  const ROLE_ICONS  = { aluno: 'fa-graduation-cap', professor: 'fa-chalkboard-user', coordenador: 'fa-user-tie', orientador: 'fa-user-shield', admin: 'fa-crown' };
+  const BANNER_COLS = ['c0','c1','c2','c3','c4','c5'];
+
+  function bannerCls(username) {
+    let h = 0;
+    for (let i = 0; i < (username || '').length; i++) h = (h * 31 + (username || '').charCodeAt(i)) % BANNER_COLS.length;
+    return BANNER_COLS[h];
+  }
+
+  function initial(nome) {
+    return (nome || '?').trim().charAt(0).toUpperCase();
+  }
+
+  function dateBR(iso) {
+    if (!iso) return '—';
+    return new Date(iso).toLocaleDateString('pt-BR', { day: '2-digit', month: 'short', year: 'numeric' });
+  }
+
+  function timeAgo(iso) {
+    if (!iso) return '—';
+    const diff = Math.floor((Date.now() - new Date(iso)) / 1000);
+    if (diff < 60)     return 'agora mesmo';
+    if (diff < 3600)   return Math.floor(diff / 60) + ' min atrás';
+    if (diff < 86400)  return Math.floor(diff / 3600) + 'h atrás';
+    if (diff < 604800) return Math.floor(diff / 86400) + 'd atrás';
+    return dateBR(iso);
+  }
+
+  function esc(s) {
+    return String(s || '').replace(/&/g,'&amp;').replace(/</g,'&lt;').replace(/>/g,'&gt;').replace(/"/g,'&quot;');
+  }
+
+  let allUsers  = [];
+  let activeRole = '';
+  let searchQ   = '';
+  let sortMode  = 'recentes';
+  const PAGE    = 16;
+  let visible   = PAGE;
+
+  function getFiltered() {
+    let list = allUsers.filter(u => {
+      const matchRole = !activeRole || u.papel === activeRole;
+      const q = searchQ.toLowerCase();
+      const matchQ = !q ||
+        (u.nome || '').toLowerCase().includes(q) ||
+        (u.username || '').toLowerCase().includes(q) ||
+        (u.escola || '').toLowerCase().includes(q);
+      return matchRole && matchQ;
+    });
+    if (sortMode === 'az')      list = list.slice().sort((a,b) => (a.nome||'').localeCompare(b.nome||''));
+    if (sortMode === 'pontos')  list = list.slice().sort((a,b) => (b.pontos||0) - (a.pontos||0));
+    return list;
+  }
+
+  function buildCard(u) {
+    const bc   = bannerCls(u.username);
+    const ini  = initial(u.nome);
+    const role = ROLE_LABELS[u.papel] || u.papel || 'Usuário';
+    const rcls = ROLE_CLS[u.papel]    || 'role-aluno';
+    const ric  = ROLE_ICONS[u.papel]  || 'fa-user';
+    return `
+      <article class="user-card" data-id="${esc(u.id)}" role="listitem" tabindex="0" aria-label="Ver perfil de ${esc(u.nome)}">
+        <div class="user-card-banner ${bc}"></div>
+        <div class="user-card-body">
+          <div class="user-avatar">${ini}</div>
+          <p class="user-name">${esc(u.nome)}</p>
+          <p class="user-username">@${esc(u.username)}</p>
+          <span class="user-role-badge ${rcls}"><i class="fa-solid ${ric}"></i> ${esc(role)}</span>
+          <p class="user-escola"><i class="fa-solid fa-school"></i> ${esc(u.escola || 'Escola não informada')}</p>
+          <div class="user-stats-row">
+            <div class="user-stat"><div class="user-stat-num">${u.pontos || 0}</div><div class="user-stat-lbl">Pontos</div></div>
+            <div class="user-stat"><div class="user-stat-num">${u.minigames_jogados || 0}</div><div class="user-stat-lbl">Jogos</div></div>
+            <div class="user-stat"><div class="user-stat-num">${u.topicos || 0}</div><div class="user-stat-lbl">Tópicos</div></div>
+          </div>
+        </div>
+      </article>`;
+  }
+
+  function updateStats() {
+    document.getElementById('statTotal').textContent      = allUsers.length;
+    document.getElementById('statProfessores').textContent = allUsers.filter(u => u.papel === 'professor' || u.papel === 'coordenador' || u.papel === 'orientador').length;
+    document.getElementById('statAlunos').textContent     = allUsers.filter(u => u.papel === 'aluno').length;
+    document.getElementById('statEscolas').textContent    = new Set(allUsers.map(u => u.escola).filter(Boolean)).size;
+  }
+
+  function renderUsers() {
+    const filtered = getFiltered();
+    const grid     = document.getElementById('usuariosGrid');
+    document.getElementById('userCountNum').textContent = filtered.length;
+    updateStats();
+
+    if (filtered.length === 0) {
+      grid.innerHTML = `
+        <div class="empty-state">
+          <div class="empty-icon"><i class="fa-solid fa-users"></i></div>
+          <h3>${searchQ || activeRole ? 'Nenhum resultado' : 'Nenhum usuário cadastrado'}</h3>
+          <p>${searchQ || activeRole ? 'Tente outro nome ou filtro.' : 'Seja o primeiro a se juntar à plataforma!'}</p>
+          <a href="junte-se.html" class="btn btn-primary"><i class="fa-solid fa-user-plus"></i> Juntar-se</a>
+        </div>`;
+      document.getElementById('loadMoreWrap').style.display = 'none';
+      return;
+    }
+
+    const shown = filtered.slice(0, visible);
+    grid.innerHTML = shown.map(buildCard).join('');
+    document.getElementById('loadMoreWrap').style.display = filtered.length > visible ? 'block' : 'none';
+
+    grid.querySelectorAll('.user-card').forEach(card => {
+      const open = () => openProfile(card.dataset.id);
+      card.addEventListener('click', open);
+      card.addEventListener('keydown', e => { if (e.key === 'Enter' || e.key === ' ') { e.preventDefault(); open(); } });
+    });
+  }
+
+  async function fetchUsers() {
+    try {
+      const data = await sbFetch(
+        'usuarios?select=id,nome,username,escola,papel,pontos,minigames_jogados,topicos,criado_em,ultimo_acesso&order=criado_em.desc',
+        { method: 'GET' }
+      );
+      allUsers = Array.isArray(data) ? data : [];
+    } catch {
+      allUsers = [];
+    }
+    renderUsers();
+  }
+
+  document.getElementById('userSearch').addEventListener('input', function() {
+    searchQ = this.value.trim();
+    visible = PAGE;
+    renderUsers();
+  });
+
+  document.getElementById('userSort').addEventListener('change', function() {
+    sortMode = this.value;
+    visible  = PAGE;
+    renderUsers();
+  });
+
+  document.querySelectorAll('.role-btn').forEach(btn => {
+    btn.addEventListener('click', function() {
+      document.querySelectorAll('.role-btn').forEach(b => b.classList.remove('active'));
+      this.classList.add('active');
+      activeRole = this.dataset.role;
+      visible    = PAGE;
+      renderUsers();
+    });
+  });
+
+  document.getElementById('btnLoadMore').addEventListener('click', () => {
+    visible += PAGE;
+    renderUsers();
+  });
+
+  function openProfile(id) {
+    const u = allUsers.find(u => u.id === id);
+    if (!u) return;
+
+    const bc  = bannerCls(u.username);
+    const ini = initial(u.nome);
+    const role = ROLE_LABELS[u.papel] || u.papel || 'Usuário';
+    const rcls = ROLE_CLS[u.papel]   || 'role-aluno';
+    const ric  = ROLE_ICONS[u.papel] || 'fa-user';
+
+    document.getElementById('profileBanner').className   = 'profile-banner ' + bc;
+    document.getElementById('profileAvatar').textContent = ini;
+    document.getElementById('profileName').textContent   = u.nome || '—';
+    document.getElementById('profileUsername').textContent = '@' + (u.username || '—');
+    document.getElementById('profileBadges').innerHTML   = `<span class="user-role-badge ${rcls}"><i class="fa-solid ${ric}"></i> ${esc(role)}</span>`;
+    document.getElementById('profileEscola').textContent = u.escola || 'Não informada';
+    document.getElementById('profileRole').textContent   = role;
+    document.getElementById('profileSince').textContent  = dateBR(u.criado_em);
+    document.getElementById('profileActive').textContent = timeAgo(u.ultimo_acesso);
+    document.getElementById('profilePontos').textContent    = u.pontos || 0;
+    document.getElementById('profileMinigames').textContent = u.minigames_jogados || 0;
+    document.getElementById('profileTopicos').textContent   = u.topicos || 0;
+
+    document.getElementById('profileOverlay').classList.add('open');
+    document.body.style.overflow = 'hidden';
+  }
+
+  function closeProfile() {
+    document.getElementById('profileOverlay').classList.remove('open');
+    document.body.style.overflow = '';
+  }
+
+  document.getElementById('profileClose').addEventListener('click', closeProfile);
+  document.getElementById('profileOverlay').addEventListener('click', e => {
+    if (e.target === document.getElementById('profileOverlay')) closeProfile();
+  });
+  document.addEventListener('keydown', e => {
+    if (e.key === 'Escape') closeProfile();
+  });
+
+  fetchUsers();
+</script>
+</body>
+</html>
