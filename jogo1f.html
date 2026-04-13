@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Carregando Minigame - C.E.I.</title>
+  <link rel="stylesheet" href="/css/jogo1f.css" />
+  <link rel="icon" type="image/png" href="img/favicon.png">
+  
+</head>
+<body>
+<div class="gate" id="gate">
+  <div class="spinner" id="spinner"></div>
+  <h1 id="gateTitle" style="color:#FFF;">Verificando acesso...</h1>
+</div>
+
+<script>
+  const SUPABASE_URL = 'https://tkpatolybraskbedknjc.supabase.co';
+  const SUPABASE_KEY = 'sb_publishable_hrQmBCRFxI0YhyCkk7SOzA_1BvyFC9U';
+
+  function getUsuario() {
+    try { return JSON.parse(localStorage.getItem('usuario_logado') || 'null'); } catch { return null; }
+  }
+
+  function getParam(name) {
+    return new URLSearchParams(window.location.search).get(name);
+  }
+
+  const id      = getParam('id');
+  const usuario = getUsuario();
+
+  if (!id) {
+    window.location.replace('minigames1f.html');
+  } else if (usuario) {
+    window.location.replace('jogo2f.html?id=' + encodeURIComponent(id));
+  } else {
+    const gate = document.getElementById('gate');
+    gate.innerHTML = `
+      <div class="gate-logo"><i class="fa-solid fa-gamepad" style="font-size:28px;"></i></div>
+      <h1>Entre para jogar!</h1>
+      <p>Este Minigame é exclusivo para membros da plataforma. Faça login ou junte-se a nós para continuar.</p>
+      <div class="gate-btns">
+        <a class="btn-entrar" href="entrar.html?next=${encodeURIComponent('jogo2f.html?id='+id)}">
+          <span>&#xf2f6;</span> Entrar na plataforma
+        </a>
+        <a class="btn-cadastro" href="junte-se.html">
+          Junte-se a nós gratuitamente!
+        </a>
+      </div>`;
+
+    const head = document.head;
+    const fa = document.createElement('link');
+    fa.rel = 'stylesheet';
+    fa.href = 'https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css';
+    head.appendChild(fa);
+  }
+</script>
+</body>
+</html>
