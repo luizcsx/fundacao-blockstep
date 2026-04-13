@@ -1,0 +1,42 @@
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+    html, body { height: 100%; }
+    body {
+      font-family: 'Inter', system-ui, sans-serif;
+      background: #10094A;
+      display: flex; align-items: center; justify-content: center;
+      min-height: 100vh; overflow: hidden;
+    }
+    .gate {
+      text-align: center; padding: 48px 32px; max-width: 440px; width: 100%;
+    }
+    .gate-logo {
+      width: 72px; height: 72px; background: #E67817; border-radius: 12px;
+      display: flex; align-items: center; justify-content: center;
+      margin: 0 auto 24px; font-size: 30px; color: #FFF;
+    }
+    .gate h1 { font-size: 22px; font-weight: 900; color: #FFF; margin-bottom: 10px; }
+    .gate p  { font-size: 14px; color: rgba(255,255,255,.65); line-height: 1.7; margin-bottom: 28px; }
+    .gate-btns { display: flex; flex-direction: column; gap: 12px; }
+    .btn-entrar {
+      display: flex; align-items: center; justify-content: center; gap: 9px;
+      width: 100%; padding: 14px; background: #E67817; color: #FFF; border: none;
+      border-radius: 8px; font-size: 15px; font-weight: 700; cursor: pointer;
+      font-family: inherit; text-decoration: none;
+      transition: background .2s;
+    }
+    .btn-entrar:hover { background: #C9660E; }
+    .btn-cadastro {
+      display: flex; align-items: center; justify-content: center; gap: 9px;
+      width: 100%; padding: 13px; background: transparent; color: rgba(255,255,255,.75);
+      border: 2px solid rgba(255,255,255,.25); border-radius: 8px;
+      font-size: 14px; font-weight: 600; cursor: pointer;
+      font-family: inherit; text-decoration: none;
+      transition: border-color .2s, color .2s;
+    }
+    .btn-cadastro:hover { border-color: rgba(255,255,255,.6); color: #FFF; }
+    .spinner {
+      width: 40px; height: 40px; border: 3px solid rgba(255,255,255,.15);
+      border-top-color: #E67817; border-radius: 50%; margin: 0 auto 20px;
+      animation: spin .8s linear infinite;
+    }
+    @keyframes spin { to { transform: rotate(360deg); } }
