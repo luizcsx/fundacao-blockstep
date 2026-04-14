@@ -283,55 +283,11 @@
 
 <script>
   document.getElementById('currentYear').textContent = new Date().getFullYear();
-
-  const hamburger = document.getElementById('hamburgerBtn');
-  const drawer    = document.getElementById('navDrawer');
-  const overlay   = document.getElementById('drawerOverlay');
-  const closeBtn  = document.getElementById('drawerClose');
-
-  function openDrawer()  { drawer.classList.add('open'); hamburger.setAttribute('aria-expanded','true'); document.body.style.overflow='hidden'; }
-  function closeDrawer() { drawer.classList.remove('open'); hamburger.setAttribute('aria-expanded','false'); document.body.style.overflow=''; }
-
-  hamburger.addEventListener('click', openDrawer);
-  overlay.addEventListener('click', closeDrawer);
-  closeBtn.addEventListener('click', closeDrawer);
-  drawer.querySelectorAll('a').forEach(a => a.addEventListener('click', closeDrawer));
-
-  let fontSize = 15;
-  function changeFontSize(delta) {
-    fontSize = Math.min(20, Math.max(12, fontSize + delta));
-    document.body.style.fontSize = fontSize + 'px';
-  }
-
-  function toggleContrast() {
-    document.documentElement.classList.toggle('high-contrast');
-    const hc = document.documentElement.classList.contains('high-contrast');
-    if (hc) {
-      document.documentElement.style.setProperty('--cei-white','#000');
-      document.documentElement.style.setProperty('--cei-text','#fff');
-      document.documentElement.style.setProperty('--cei-gray','#111');
-      document.documentElement.style.setProperty('--cei-border','#555');
-      document.documentElement.style.setProperty('--cei-muted','#ccc');
-    } else {
-      ['--cei-white','--cei-text','--cei-gray','--cei-border','--cei-muted'].forEach(v =>
-        document.documentElement.style.removeProperty(v)
-      );
-    }
-  }
-
-  document.getElementById('vlibrasBtn').addEventListener('click', function() {
-    const accessBtn = document.querySelector('[vw-access-button]');
-    if (accessBtn) {
-      accessBtn.style.display = 'flex';
-      accessBtn.click();
-      accessBtn.style.display = 'none';
-    }
-  });
-
-  document.querySelectorAll('.btn-toggle-pw').forEach(btn => {
-    btn.addEventListener('click', function() {
-      const input = document.getElementById(this.dataset.target);
-      const icon  = this.querySelector('i');
+ 
+  document.querySelectorAll('.btn-toggle-pw').forEach(function (btn) {
+    btn.addEventListener('click', function () {
+      var input = document.getElementById(this.dataset.target);
+      var icon  = this.querySelector('i');
       if (input.type === 'password') {
         input.type = 'text';
         icon.className = 'fa-solid fa-eye-slash';
@@ -341,57 +297,103 @@
       }
     });
   });
-
-  document.getElementById('btn-entrar').addEventListener('click', async function() {
+ 
+  var _darkVars = {
+    '--cei-white':  '#0E1117',
+    '--cei-text':   '#E8ECF0',
+    '--cei-gray':   '#1A1F28',
+    '--cei-border': '#2E3440',
+    '--cei-muted':  '#8B9AAB',
+  };
+  var _dark = localStorage.getItem('cei_dark') === '1';
+  function _applyDark(on) {
+    document.documentElement.classList.toggle('high-contrast', on);
+    Object.keys(_darkVars).forEach(function (v) {
+      if (on) document.documentElement.style.setProperty(v, _darkVars[v]);
+      else    document.documentElement.style.removeProperty(v);
+    });
+    localStorage.setItem('cei_dark', on ? '1' : '0');
+  }
+  _applyDark(_dark);
+</script>
+ 
+<script type="module">
+  import { createClient } from 'https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2/+esm';
+ 
+  const SUPABASE_URL = 'https://tkpatolybraskbedknjc.supabase.co';
+  const SUPABASE_KEY = 'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6InRrcGF0b2x5YnJhc2tiZWRrbmpjIiwicm9sZSI6ImFub24iLCJpYXQiOjE3NzQ3OTU3MDEsImV4cCI6MjA5MDM3MTcwMX0.StBtmkGixU93Jcehu5SIanBvH2OTUDxM_8CLY5BmOks';
+  const supabase     = createClient(SUPABASE_URL, SUPABASE_KEY);
+  const REDIRECT_URL = window.location.origin + '/dashboard2f.html';
+ 
+  const AUTH_ERRORS = {
+    'Invalid login credentials': 'E-mail ou senha incorretos.',
+    'Email not confirmed':       'Confirme seu e-mail antes de entrar.',
+    'Too many requests':         'Muitas tentativas. Aguarde alguns minutos.',
+  };
+  const errPT = (msg) => AUTH_ERRORS[msg] || msg || 'Ocorreu um erro inesperado.';
+ 
+  document.getElementById('btn-entrar').addEventListener('click', async function () {
     const email    = document.getElementById('login-email').value.trim();
     const senha    = document.getElementById('login-senha').value;
     const alertEl  = document.getElementById('alert-login');
     const alertMsg = document.getElementById('alert-login-msg');
-
     alertEl.classList.remove('show');
-
+ 
     if (!email || !senha) {
       alertMsg.textContent = 'Preencha o e-mail e a senha.';
       alertEl.classList.add('show');
       return;
     }
-
-    this.classList.add('loading');
-    this.disabled = true;
-
-    try {
-      const resposta = await fetch('/api/auth/login', {
-        method:  'POST',
-        headers: { 'Content-Type': 'application/json' },
-        body:    JSON.stringify({ email, senha }),
-      });
-
-      const dados = await resposta.json();
-
-      if (dados.ok && dados.usuario) {
-        localStorage.setItem('usuario_logado', JSON.stringify({
-          nome:     dados.usuario.nome,
-          username: dados.usuario.username,
-          escola:   dados.usuario.escola,
-        }));
-        window.location.href = 'dashboard.html';
-      } else {
-        alertMsg.textContent = dados.message || 'E-mail ou senha incorretos.';
-        alertEl.classList.add('show');
-      }
-
-    } catch {
-      alertMsg.textContent = 'Erro de conexão. Tente novamente.';
+ 
+    this.classList.add('loading'); this.disabled = true;
+ 
+    const { data: loginData, error: loginError } =
+      await supabase.auth.signInWithPassword({ email, password: senha });
+ 
+    if (loginError) {
+      this.classList.remove('loading'); this.disabled = false;
+      alertMsg.textContent = errPT(loginError.message);
       alertEl.classList.add('show');
-
-    } finally {
-      this.classList.remove('loading');
-      this.disabled = false;
+      return;
     }
+ 
+    const { data: perfil } = await supabase
+      .from('usuarios')
+      .select('id,nome,username,email,escola,papel')
+      .eq('id', loginData.user.id)
+      .single();
+ 
+    localStorage.setItem('usuario_logado', JSON.stringify({
+      id:       loginData.user.id,
+      nome:     perfil?.nome     || loginData.user.user_metadata?.nome     || '',
+      username: perfil?.username || loginData.user.user_metadata?.username || '',
+      email:    perfil?.email    || loginData.user.email                   || '',
+      escola:   perfil?.escola   || loginData.user.user_metadata?.escola   || '',
+      papel:    perfil?.papel    || 'aluno',
+    }));
+ 
+    this.classList.remove('loading'); this.disabled = false;
+ 
+    const next = new URLSearchParams(window.location.search).get('next');
+    window.location.href = next || 'dashboard2f.html';
   });
-
-  document.getElementById('btn-google-login').addEventListener('click', () => {
-    window.location.href = '/api/auth/google';
+ 
+  document.getElementById('btn-google-login').addEventListener('click', async function () {
+    this.disabled = true; this.style.opacity = '0.6';
+    const { error } = await supabase.auth.signInWithOAuth({
+      provider: 'google',
+      options: {
+        redirectTo: REDIRECT_URL,
+        queryParams: { access_type: 'offline', prompt: 'consent' },
+      },
+    });
+    if (error) {
+      this.disabled = false; this.style.opacity = '';
+      const alertEl  = document.getElementById('alert-login');
+      const alertMsg = document.getElementById('alert-login-msg');
+      alertMsg.textContent = 'Erro ao iniciar login com Google: ' + error.message;
+      alertEl.classList.add('show');
+    }
   });
 </script>
 </body>
