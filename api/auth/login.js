@@ -1,9 +1,9 @@
 export default async function handler(req, res) {
   if (req.method !== 'POST') {
-    return res.status(405).json({ error: 'Método não permitido' });
+    return res.status(405).json({ error: 'Método não permitido.' });
   }
 
-  const { email, senha } = req.body;
+  const { email, senha } = req.body; 
   const supabaseUrl = process.env.SUPABASE_URL;
   const supabaseKey = process.env.SUPABASE_ANON_KEY;
 
@@ -25,9 +25,9 @@ export default async function handler(req, res) {
     const data = await response.json();
 
     if (response.ok) {
-      return res.status(200).json({ ok: true, redirect: 'dashboard.html' });
+      return res.status(200).json({ ok: true, session: data });
     } else {
-      return res.status(400).json({ message: data.message || 'Erro nos dados enviados.' });
+      return res.status(response.status).json(data);
     }
   } catch (error) {
     return res.status(500).json({ error: error.message });
