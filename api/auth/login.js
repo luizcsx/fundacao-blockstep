@@ -11,9 +11,9 @@ export default async function handler(req, res) {
     const response = await fetch(`${supabaseUrl}/auth/v1/token?grant_type=password`, {
       method: 'POST',
       headers: {
-        'apikey': supabaseKey,
-        'Content-Type': 'application/json',
-        'Authorization': `Bearer ${supabaseKey}`
+      'apikey': process.env.SUPABASE_ANON_KEY,
+      'Authorization': `Bearer ${process.env.SUPABASE_ANON_KEY}`,
+      'Content-Type': 'application/json'
       },
       body: JSON.stringify({ 
         email: email, 
