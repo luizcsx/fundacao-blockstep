@@ -1,6 +1,6 @@
 export default async function handler(req, res) {
   if (req.method !== 'POST') {
-    return res.status(405).json({ ok: false, message: 'Método não permitido.' });
+    return res.status(405).json({ error: 'Método não permitido' });
   }
 
   const { email, senha } = req.body;
@@ -13,7 +13,8 @@ export default async function handler(req, res) {
       headers: {
         'apikey': supabaseKey,
         'Authorization': `Bearer ${supabaseKey}`,
-        'Content-Type': 'application/json'
+        'Content-Type': 'application/json',
+        'Prefer': 'return=representation'
       },
       body: JSON.stringify({ 
         email: email, 
@@ -26,9 +27,9 @@ export default async function handler(req, res) {
     if (response.ok) {
       return res.status(200).json({ ok: true, redirect: 'dashboard.html' });
     } else {
-      return res.status(401).json({ ok: false, message: data.message || 'Erro de autenticação.' });
+      return res.status(response.status).json(data);
     }
   } catch (error) {
-    return res.status(500).json({ ok: false, message: error.message });
+    return res.status(500).json({ error: error.message });
   }
 }
