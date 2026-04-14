@@ -1,6 +1,4 @@
 import { createClient } from '@supabase/supabase-js';
-import bcrypt from 'bcryptjs';
-import jwt from 'jsonwebtoken';
 
 const supabase = createClient(
   process.env.SUPABASE_URL,
@@ -8,30 +6,30 @@ const supabase = createClient(
 );
 
 export default async function handler(req, res) {
-  if (req.method !== 'POST')
-    return res.status(405).end();
+  if (req.method !== 'POST') {
+    return res.status(405).json({ message: 'Método não permitido' });
+  }
 
   const { email, senha } = req.body;
 
-  const { data: user } = await supabase
-    .from('usuarios')
-    .select('*')
-    .eq('email', email)
-    .single();
+  try {
+    const { data, error } = await supabase.auth.signInWithPassword({
+      email: email,
+      password: senha,
+    });
 
-  if (!user || !user.senha_hash)
-    return res.status(401).json({ ok: false, message: 'Credenciais inválidas.' });
+    if (error) {
+      return res.status(400).json({ ok: false, message: 'E-mail ou senha incorretos.' });
+    }
 
-  const ok = await bcrypt.compare(senha, user.senha_hash);
-  if (!ok)
-    return res.status(401).json({ ok: false, message: 'Credenciais inválidas.' });
+    return res.status(200).json({ 
+      ok: true, 
+      session: data.session, 
+      user: data.user,
+      redirect: '/dashboard.html' 
+    });
 
-  const token = jwt.sign(
-    { id: user.id, username: user.username },
-    process.env.JWT_SECRET,
-    { expiresIn: '7d' }
-  );
-
-  res.setHeader('Set-Cookie', `cei_token=${token}; HttpOnly; Path=/; Max-Age=604800; SameSite=Lax`);
-  return res.status(200).json({ ok: true, redirect: '/index.html' });
+  } catch (err) {
+    return res.status(500).json({ ok: false, message: 'Erro interno no servidor.' });
+  }
 }
