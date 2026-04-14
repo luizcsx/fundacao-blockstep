@@ -1,9 +1,7 @@
 export default async function handler(req, res) {
-  if (req.method !== 'POST') {
-    return res.status(405).json({ error: 'Método não permitido.' });
-  }
+  if (req.method !== 'POST') return res.status(405).json({ error: 'Método não permitido' });
 
-  const { email, senha } = req.body; 
+  const { email, senha } = req.body;
   const supabaseUrl = process.env.SUPABASE_URL;
   const supabaseKey = process.env.SUPABASE_ANON_KEY;
 
@@ -13,13 +11,9 @@ export default async function handler(req, res) {
       headers: {
         'apikey': supabaseKey,
         'Authorization': `Bearer ${supabaseKey}`,
-        'Content-Type': 'application/json',
-        'Prefer': 'return=representation'
+        'Content-Type': 'application/json'
       },
-      body: JSON.stringify({ 
-        email: email, 
-        password: senha
-      })
+      body: JSON.stringify({ email, password: senha })
     });
 
     const data = await response.json();
@@ -27,6 +21,7 @@ export default async function handler(req, res) {
     if (response.ok) {
       return res.status(200).json({ ok: true, session: data });
     } else {
+      console.error('Erro detalhado:', data);
       return res.status(response.status).json(data);
     }
   } catch (error) {
