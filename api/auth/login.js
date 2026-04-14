@@ -1,5 +1,7 @@
 export default async function handler(req, res) {
-  if (req.method !== 'POST') return res.status(405).json({ error: 'Método não permitido' });
+  if (req.method !== 'POST') {
+    return res.status(405).json({ message: 'Método não permitido' });
+  }
 
   const { email, senha } = req.body;
   const supabaseUrl = process.env.SUPABASE_URL;
@@ -18,13 +20,13 @@ export default async function handler(req, res) {
 
     const data = await response.json();
 
-    if (response.ok) {
-      return res.status(200).json({ ok: true, session: data });
-    } else {
-      console.error('Erro detalhado:', data);
-      return res.status(response.status).json(data);
+    if (!response.ok) {
+      return res.status(response.status).json({ message: data.error_description || data.msg || 'Erro ao logar' });
     }
+
+    return res.status(200).json({ success: true, session: data });
+
   } catch (error) {
-    return res.status(500).json({ error: error.message });
+    return res.status(500).json({ message: 'Erro no servidor: ' + error.message });
   }
 }
