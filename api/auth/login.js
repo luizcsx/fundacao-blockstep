@@ -8,19 +8,24 @@ const supabase = createClient(
 );
 
 export default async function handler(req, res) {
-  if (req.method !== 'POST')
-    return res.status(405).end();
+  console.log("Tentativa de login para:", req.body.email);
+
+  if (req.method !== 'POST') return res.status(405).end();
 
   const { email, senha } = req.body;
 
-  const { data: user } = await supabase
+  const { data: user, error } = await supabase
     .from('usuarios')
     .select('*')
     .eq('email', email)
     .single();
 
-  if (!user || !user.senha_hash)
-    return res.status(401).json({ ok: false, message: 'Credenciais inválidas.' });
+  if (error) console.log("Erro ao buscar user:", error.message);
+
+  if (!user || !user.senha_hash) {
+    console.log("Login negado: Usuário não existe ou é conta Google (sem senha)");
+    return res.status(401).json({ ok: false, message: 'Credenciais inválidas ou conta Google.' });
+  }
 
   const ok = await bcrypt.compare(senha, user.senha_hash);
   if (!ok)
