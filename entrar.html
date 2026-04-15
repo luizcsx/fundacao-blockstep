@@ -359,7 +359,7 @@
     this.classList.add('loading');
     this.disabled = true;
 
-    try {
+try {
       const resposta = await fetch('/api/auth/login', {
         method:  'POST',
         headers: { 'Content-Type': 'application/json' },
@@ -368,17 +368,22 @@
 
       const dados = await resposta.json();
 
-      if (dados.ok && dados.usuario) {
-        localStorage.setItem('usuario_logado', JSON.stringify({
-          nome:     dados.usuario.nome,
-          username: dados.usuario.username,
-          escola:   dados.usuario.escola,
-        }));
-        window.location.href = 'dashboard.html';
+      if (dados.ok) {
+        if (dados.usuario) {
+          localStorage.setItem('usuario_logado', JSON.stringify(dados.usuario));
+        }
+      
+        window.location.href = dados.redirect || 'dashboard.html';
       } else {
         alertMsg.textContent = dados.message || 'E-mail ou senha incorretos.';
         alertEl.classList.add('show');
       }
+
+    } catch (err) {
+      console.error(err);
+      alertMsg.textContent = 'Erro de conexão. Tente novamente.';
+      alertEl.classList.add('show');
+    }
 
     } catch {
       alertMsg.textContent = 'Erro de conexão. Tente novamente.';
