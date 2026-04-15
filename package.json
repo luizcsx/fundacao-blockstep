@@ -2,6 +2,7 @@
   "name": "centro-educacional-de-itaborai",
   "version": "1.0.0",
   "description": "Plataforma educacional do Centro Educacional de Itaboraí",
+  "type": "module", 
   "main": "index.js",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
