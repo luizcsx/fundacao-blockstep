@@ -38,7 +38,7 @@ const token = jwt.sign(
 );
 
 res.setHeader('Set-Cookie', `cei_token=${token}; HttpOnly; Path=/; Max-Age=604800; SameSite=Lax`);
-
+  
 return res.status(200).json({ 
     ok: true, 
     redirect: '/dashboard.html',
