@@ -100,10 +100,6 @@
           <div class="mg-hstat-lbl">Minigames</div>
         </div>
         <div class="mg-hstat">
-          <div class="mg-hstat-num" id="statJogadas">0</div>
-          <div class="mg-hstat-lbl">Partidas jogadas</div>
-        </div>
-        <div class="mg-hstat">
           <div class="mg-hstat-num" id="statCriadores">0</div>
           <div class="mg-hstat-lbl">Criadores</div>
         </div>
@@ -375,7 +371,6 @@
     const loadMore = document.getElementById('mgLoadMore');
 
     document.getElementById('statTotal').textContent = allGames.length;
-    document.getElementById('statJogadas').textContent = allGames.reduce((s, g) => s + (g.partidas || 0), 0);
     document.getElementById('statCriadores').textContent = [...new Set(allGames.map(g => g.criador_id))].length;
 
     if (filtered.length === 0) {
