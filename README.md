@@ -28,7 +28,7 @@ O Centro Educacional de Itaboraí foi desenvolvido ouvindo quem entende de educa
 ## Como acessar
 
 A plataforma é otimizada para computadores e tablets das escolas:
-* **Link de Acesso:** [https://centro-educacional-itaborai.vercel.app](https://centro-educacional-itaborai.vercel.app)
+* **Link de Acesso:** [https://centro-educacional-de-itaborai.vercel.app](https://centro-educacional-de-itaborai.vercel.app)
 
 ---
 
