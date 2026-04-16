@@ -528,8 +528,8 @@
       this.classList.remove('loading'); this.disabled = false;
       if (d.ok) {
         al.className = 'auth-alert auth-alert-ok show';
-        document.getElementById('alert-reg-msg').textContent = 'Conta criada! Aguarde um momento...';
-        setTimeout(() => window.location.href = d.redirect || 'dashboard.html', 1500);
+        document.getElementById('alert-reg-msg').textContent = 'Conta criada! Redirecionando...';
+        setTimeout(() => window.location.href = d.redirect || 'entrar.html', 1500);
       } else {
         document.getElementById('alert-reg-msg').textContent = d.message || 'Erro ao criar conta.';
         al.classList.add('show');
@@ -557,7 +557,7 @@
     .then(r => r.json())
     .then(d => {
       this.classList.remove('loading'); this.disabled = false;
-      if (d.ok) window.location.href = d.redirect || 'dashboard.html';
+      if (d.ok) window.location.href = d.redirect || 'entrar.html';
       else al.classList.add('show');
     })
     .catch(() => { this.classList.remove('loading'); this.disabled = false; al.classList.add('show'); });
