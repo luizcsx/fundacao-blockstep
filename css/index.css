@@ -116,7 +116,9 @@
     .game-thumb.lit     { background: #F3E5F5; color: #6A1B9A; }
     .game-thumb.geo     { background: #E0F7FA; color: #00695C; }
     .game-thumb.arts    { background: #FCE4EC; color: #C62828; }
-    .game-thumb.phys    { background: #F3E5F5; color: #4A148C; }
+    .game-thumb.phys    { background: #2E7D32; color: #E8F5E9; }
+    .game-thumb.english { background: #E3F2FD; color: #1565C0; }
+    .game-thumb.prod    { background: #F3E5F5; color: #4A148C; }
     .game-thumb.def     { background: var(--cei-gray); color: var(--cei-muted); }
     .game-card-body { padding: 18px; }
     .game-meta { display: flex; align-items: center; gap: 6px; margin-bottom: 8px; }
