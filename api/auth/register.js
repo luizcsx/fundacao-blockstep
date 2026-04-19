@@ -24,10 +24,17 @@ export default async function handler(req, res) {
     provider: 'email'
   });
 
-  if (error) {
+if (error) {
     const msg = error.message.includes('unique')
       ? 'E-mail ou nome de usuário já cadastrado.'
       : 'Erro ao criar conta.';
+
+    if (error.message.includes('USUARIO_BANIDO')) {
+      msg = 'Este e-mail está permanentemente banido da plataforma por violação das regras.';
+    } else if (error.message.includes('unique')) {
+      msg = 'E-mail ou nome de usuário já cadastrado.';
+    }
+    
     return res.status(400).json({ ok: false, message: msg });
   }
 
