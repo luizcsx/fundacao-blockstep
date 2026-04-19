@@ -37,7 +37,7 @@ export default async function handler(req, res) {
       const errorString = JSON.stringify(error).toUpperCase();
 
       if (errorString.includes('USUARIO_BANIDO')) {
-        msg = 'Este e-mail está permanentemente banido da plataforma por violação das regras.';
+        msg = 'Este endereço de e-mail possui restrições de acesso e não pode ser utilizado.';
         return res.status(403).json({ ok: false, message: msg });
       }
 
