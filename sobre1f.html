@@ -336,8 +336,8 @@
 <script>new window.VLibras.Widget('https://vlibras.gov.br/app');</script>
 
 <script>
-  const SUPABASE_URL = 'SUPABASE_URL_AQUI';
-  const SUPABASE_KEY = 'SUPABASE_ANON_KEY_AQUI';
+  const SUPABASE_URL = 'https://tkpatolybraskbedknjc.supabase.co';
+  const SUPABASE_KEY = 'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6InRrcGF0b2x5YnJhc2tiZWRrbmpjIiwicm9sZSI6ImFub24iLCJpYXQiOjE3NzQ3OTU3MDEsImV4cCI6MjA5MDM3MTcwMX0.StBtmkGixU93Jcehu5SIanBvH2OTUDxM_8CLY5BmOks';
   async function sbGet(p) {
     try { const r = await fetch(SUPABASE_URL+'/rest/v1/'+p,{headers:{'apikey':SUPABASE_KEY,'Authorization':'Bearer '+SUPABASE_KEY}}); return r.ok?await r.json():null; } catch{return null;}
   }
