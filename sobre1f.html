@@ -1,0 +1,393 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Sobre - Centro Educacional de Itaboraí</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800;900&display=swap" rel="stylesheet" />
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css" />
+  <link rel="stylesheet" href="/css/sobre1f.css" />
+  <link rel="icon" type="image/png" href="img/favicon.ico">
+
+</head>
+<body>
+
+<div class="topbar" role="banner">
+  <div class="container">
+    <div class="topbar-left">
+      <span><i class="fa-solid fa-triangle-exclamation"></i> <strong>ATENÇÃO:</strong> Plataforma em fase de testes. Projeto não-oficial sem ligação com orgãos públicos municipais.</span>
+    </div>
+    <div class="topbar-right">
+      <div class="accessibility-bar" aria-label="Ferramentas de acessibilidade">
+        <button aria-label="Aumentar fonte" onclick="changeFontSize(1)"><i class="fa-solid fa-a"></i> A+</button>
+        <button aria-label="Diminuir fonte" onclick="changeFontSize(-1)"><i class="fa-solid fa-a"></i> A-</button>
+        <button aria-label="Alto contraste" onclick="toggleContrast()"><i class="fa-solid fa-circle-half-stroke"></i></button>
+      </div>
+      <a href="mailto:centroeducacionaldeitaborai@gmail.com"><i class="fa-solid fa-envelope"></i> Contato</a>
+      <a href="suporte1f.html"><i class="fa-solid fa-circle-question"></i> Ajuda</a>
+    </div>
+  </div>
+</div>
+
+<header class="header" role="navigation" aria-label="Menu principal">
+  <div class="container">
+    <a href="index.html" class="logo" aria-label="Centro Educacional de Itaborai">
+      <div class="logo-emblem" aria-hidden="true"><i class="fa-solid fa-c"></i></div>
+    </a>
+    <nav class="nav" aria-label="Navegacao principal">
+      <a href="index.html"><i class="fa-solid fa-house"></i> Início</a>
+      <a href="minigames1f.html"><i class="fa-solid fa-gamepad"></i> Minigames</a>
+      <a href="forum1f.html"><i class="fa-solid fa-comments"></i> Fórum</a>
+      <a href="usuarios1f.html"><i class="fa-solid fa-user-circle"></i> Usuários</a>
+      <a href="sobre1f.html" class="active"><i class="fa-solid fa-circle-info"></i> Sobre</a>
+      <a href="ranking1f.html"><i class="fa-solid fa-trophy"></i> Ranking</a>
+    </nav>
+    <div class="header-actions">
+      <div class="search-bar" role="search">
+        <i class="fa-solid fa-magnifying-glass" aria-hidden="true"></i>
+        <input type="search" placeholder="Pesquisar..." aria-label="Pesquisar" />
+      </div>
+      <a href="entrar.html" class="btn btn-outline btn-login"><i class="fa-solid fa-right-to-bracket"></i> Entrar</a>
+      <a href="junte-se.html" class="btn btn-primary"><i class="fa-solid fa-user-plus"></i> Juntar-se</a>
+      <button class="hamburger" id="hamburgerBtn" aria-label="Abrir menu" aria-expanded="false">
+        <i class="fa-solid fa-bars"></i>
+      </button>
+    </div>
+  </div>
+</header>
+
+<div class="nav-drawer" id="navDrawer" role="dialog" aria-modal="true" aria-label="Menu de navegação">
+  <div class="drawer-overlay" id="drawerOverlay"></div>
+  <div class="drawer-panel">
+    <div class="drawer-header">
+      <div class="logo">
+        <div class="logo-emblem" style="width:38px;height:38px;" aria-hidden="true">
+          <i class="fa-solid fa-graduation-cap" style="font-size:16px;"></i>
+        </div>
+        <div class="logo-text"><span class="abbr"></span></div>
+      </div>
+      <button class="drawer-close" id="drawerClose" aria-label="Fechar menu"><i class="fa-solid fa-xmark"></i></button>
+    </div>
+    <nav class="drawer-nav">
+      <a href="index.html"><i class="fa-solid fa-house"></i> Início</a>
+      <a href="minigames1f.html"><i class="fa-solid fa-gamepad"></i> Minigames</a>
+      <a href="forum1f.html"><i class="fa-solid fa-comments"></i> Fórum</a>
+      <a href="usuarios1f.html"><i class="fa-solid fa-user-circle"></i> Usuários</a>
+      <a href="sobre1f.html"><i class="fa-solid fa-circle-info"></i> Sobre</a>
+      <a href="ranking1f.html"><i class="fa-solid fa-trophy"></i> Ranking</a>
+    </nav>
+    <div class="drawer-footer">
+      <a href="junte-se.html" class="btn btn-primary" style="width:100%;justify-content:center;"><i class="fa-solid fa-right-to-bracket"></i> Junte-se a nós!</a>
+    </div>
+  </div>
+</div>
+
+<section class="sobre-hero" aria-label="Sobre o Centro Educacional de Itaboraí">
+  <div class="container">
+    <div class="sobre-hero-inner">
+      <div>
+        <div class="hero-kicker"><i class="fa-solid fa-circle-info"></i> Sobre a plataforma</div>
+        <h1>“O amanhã,<br><em>hoje.</em>”</h1>
+        <p class="hero-desc">O Centro Educacional de Itaboraí é uma plataforma pedagógica digital desenvolvida para fortalecer o ensino e a aprendizagem nas escolas municipais de Itaboraí, Rio de Janeiro &mdash; e para educadores de todo o Brasil. Gratuita, aberta e feita por alunos, para alunos.</p>
+        <div class="hero-actions">
+          <a href="junte-se.html" class="btn btn-primary"><i class="fa-solid fa-user-plus"></i> Junte-se a nós!</a>
+          <a href="#o-que-e" class="btn btn-ghost"><i class="fa-solid fa-chevron-down"></i> Conhecer a plataforma</a>
+        </div>
+      </div>
+      <div class="hero-stats">
+        <div class="hero-stat-box"><span class="n" id="hU">&#8212;</span><span class="l">Usuários cadastrados</span></div>
+        <div class="hero-stat-box"><span class="n" id="hM">&#8212;</span><span class="l">Minigames disponíveis</span></div>
+        <div class="hero-stat-box"><span class="n" id="hT">&#8212;</span><span class="l">Postagens no fórum</span></div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<nav class="quickbar" aria-label="Navegacao rapida">
+  <div class="container">
+    <a href="#o-que-e" class="quick-item"><i class="fa-solid fa-circle-info"></i> Quem Somos?</a>
+    <a href="#missao"  class="quick-item"><i class="fa-solid fa-bullseye"></i> Nossa Missão e Valores</a>
+    <a href="#como-funciona" class="quick-item"><i class="fa-solid fa-gears"></i> Como Funciona?</a>
+    <a href="#parceria" class="quick-item"><i class="fa-solid fa-handshake"></i> Parceria</a>
+    <a href="#faq"      class="quick-item"><i class="fa-solid fa-circle-question"></i> Perguntas Frequentes (FAQs)</a>
+    <a href="#ajuda"    class="quick-item"><i class="fa-solid fa-headset"></i> Central de Ajuda</a>
+  </div>
+</nav>
+
+<section class="section" id="o-que-e" aria-labelledby="t-oq">
+  <div class="container">
+    <div class="section-header">
+      <div class="section-label"><i class="fa-solid fa-circle-info"></i> O que é?</div>
+      <h2 class="section-title" id="t-oq">Uma plataforma feita por alunos, para alunos</h2>
+      <p>O Centro Educacional de Itaboraí nasceu da necessidade real de professores e coordenadores de Itaboraí de ter ferramentas digitais pedagogicas de qualidade.</p>
+    </div>
+    <div class="pilares-grid">
+      <div class="pilar-card">
+        <div class="pilar-icon"><i class="fa-solid fa-gamepad"></i></div>
+        <h3>Minigames Educativos</h3>
+        <p>Perguntas criadas pelos próprios professores. Cada partida vale pontos, e os resultados vão direto para o ranking da plataforma.</p>
+        <a href="minigames1f.html" class="pilar-link" style="text-decoration: none;"><i class="fa-solid fa-arrow-right"></i> Explorar Minigames</a>
+      </div>
+      <div class="pilar-card">
+        <div class="pilar-icon"><i class="fa-solid fa-comments"></i></div>
+        <h3>Fórum de Discussão Colaborativo</h3>
+        <p>Espaço moderado para professores, coordenadores e alunos debaterem conteudos curriculares, revisarem matérias e trocarem experiências pedagógicas em 9 categorias disponíveis.</p>
+        <a href="forum1f.html" class="pilar-link" style="text-decoration: none;"><i class="fa-solid fa-arrow-right"></i> Acessar o Fórum</a>
+      </div>
+      <div class="pilar-card">
+        <div class="pilar-icon"><i class="fa-solid fa-trophy"></i></div>
+        <h3>Ranking e Conquistas</h3>
+        <p>Cada partida jogada gera pontos. O ranking geral é por escola incentiva a participação saudável e mostra a evolução de cada usuário ao longo do tempo.</p>
+        <a href="ranking1f.html" class="pilar-link" style="text-decoration: none;"><i class="fa-solid fa-arrow-right"></i> Ver ranking</a>
+      </div>
+      <div class="pilar-card">
+        <div class="pilar-icon"><i class="fa-solid fa-user-circle"></i></div>
+        <h3>Diretório de Usuários</h3>
+        <p>Professores, coordenadores e alunos cadastrados aparecem no diretório com seu papel, escola e pontuação. Uma comunidade visível e conectada.</p>
+        <a href="usuarios1f.html" class="pilar-link" style="text-decoration: none;"><i class="fa-solid fa-arrow-right"></i> Ver Comunidade</a>
+      </div>
+      <div class="pilar-card">
+        <div class="pilar-icon"><i class="fa-solid fa-calendar-days"></i></div>
+        <h3>Calendario Escolar (beta)</h3>
+        <p>Feriados nacionais, estaduais e municipais de Itaboraí integrados com filtro por região.</p>
+        <a href="calendario1f.html" class="pilar-link" style="text-decoration: none;"><i class="fa-solid fa-arrow-right"></i> Ver Calendário</a>
+      </div>
+      <div class="pilar-card">
+        <div class="pilar-icon"><i class="fa-solid fa-universal-access"></i></div>
+        <h3>Acessibilidade</h3>
+        <p>Integração nativa com VLibras, ajuste de tamanho de fonte (12-22px), alto contraste e múltiplos temas visuais. A plataforma é de todos, para todos.</p>
+        <a href="acessibilidade1f.html" class="pilar-link" style="text-decoration: none;"><i class="fa-solid fa-arrow-right"></i> Recursos de Acessibilidade</a>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="section section-gray" id="missao" aria-labelledby="t-ms">
+  <div class="container">
+    <div class="section-header">
+      <div class="section-label"><i class="fa-solid fa-bullseye"></i> Missão e Valores</div>
+      <h2 class="section-title" id="t-ms">O que nos guia</h2>
+      <p>O Centro Educacional de Itaboraí é um projeto independente e não-oficial. Não possuímos vínculo com nenhum orgão público municipal. Somos guiados por seis princípios simples.</p>
+    </div>
+    <div class="valores-grid">
+      <div class="valor-item"><div class="valor-num">01</div><div class="valor-text"><h4>Educação como direito</h4><p>Ferramentas pedagógicas de qualidade devem ser acessiveis a qualquer escola, independente de orcamento ou localizacao. O Centro Educacional de Itaboraí é e sempre será gratuito.</p></div></div>
+      <div class="valor-item"><div class="valor-num">02</div><div class="valor-text"><h4>Conteúdo criado por quem ensina</h4><p>Os Minigames e tópicos do Fórum são criados pelos próprios professores e coordenadores. Quem está em sala de aula sabe o que os alunos precisam aprender.</p></div></div>
+      <div class="valor-item"><div class="valor-num">03</div><div class="valor-text"><h4>Aprendizado lúdico e eficiente</h4><p>Minigames educativos aumentam em até 40% a retenção de conteúdo. Os Minigames do Centro Educacional de Itaboraí são baseados em técnicas de repetição espaçada e feedback imediato.</p></div></div>
+      <div class="valor-item"><div class="valor-num">04</div><div class="valor-text"><h4>Transparência total</h4><p>Somos claros sobre o que somos: um projeto independente, não-oficial, sem ligação com a Prefeitura de Itaboraí ou qualquer orgão governamental.</p></div></div>
+      <div class="valor-item"><div class="valor-num">05</div><div class="valor-text"><h4>Ambiente seguro e moderado</h4><p>O Fórum e todas as interações são supervisionados por administradores, coordenadores e orientadores educacionais com regras claras de conduta e penalidades transparentes.</p></div></div>
+      <div class="valor-item"><div class="valor-num">06</div><div class="valor-text"><h4>Privacidade dos dados</h4><p>Senhas são criptografadas, nunca ficam em texto puro. Dados de menores são tratados com cuidado redobrado conforme nossa <a href="privacidade1f.html" style="color: #E67817; font-weight: bold;">política de privacidade</a>.</p></div></div>
+    </div>
+  </div>
+</section>
+
+<section class="section" id="como-funciona" aria-labelledby="t-cf">
+  <div class="container">
+    <div class="section-header" style="text-align:center;margin-bottom:52px;">
+      <div class="section-label" style="justify-content:center;"><i class="fa-solid fa-gears"></i> Passo a passo</div>
+      <h2 class="section-title" id="t-cf">Como funciona na prática</h2>
+      <p style="margin:0 auto;">Menos de dois minutos para começar a usar a plataforma.</p>
+    </div>
+    <div class="como-grid">
+      <div class="como-step"><div class="como-circle">1</div><h4>Crie sua conta</h4><p>Cadastro gratuito com e-mail ou Google. Informe seu nome, escola e papel &mdash; aluno, professor ou coordenador.</p></div>
+      <div class="como-step"><div class="como-circle">2</div><h4>Explore os Minigames</h4><p>Filtre por disciplina ou dificuldade. Escolha um Minigame, responda as perguntas e veja seu resultado imediatamente.</p></div>
+      <div class="como-step"><div class="como-circle">3</div><h4>Participe do Fórum</h4><p>Crie tópicos, responda perguntas e vote nas melhores contribuições. Cada interação fortalece a comunidade.</p></div>
+      <div class="como-step"><div class="como-circle">4</div><h4>Suba no Ranking</h4><p>Cada partida jogada gera pontos. Acompanhe sua evolução no Ranking geral e compare com seus colegas da sua escola.</p></div>
+    </div>
+  </div>
+</section>
+
+<section class="about-strip" id="parceria" aria-labelledby="t-par">
+  <div class="container">
+    <div class="about-text">
+      <div class="section-label"><i class="fa-solid fa-handshake"></i> Parceria</div>
+      <h2 class="section-title" id="t-par">Desenvolvida dentro da escola</h2>
+      <p style="font-size: 15px">O Centro Educacional de Itaboraí nasceu em parceria com a Escola Municipal Antônio Santos da Silva, em Itaboraí (RJ). Professores e coordenadores da E.M.A.S.S. participam ativamente da criação de Minigames e da moderação do Fórum.</p>
+      <div class="about-features">
+        <div class="about-feat">
+          <div class="about-feat-icon"><i class="fa-solid fa-school"></i></div>
+          <div class="about-feat-text"><h5>E. M. Antônio Santos da Silva</h5><p>Escola municipal de referencia em Itaboraí e primeira parceira do projeto desde sua fundação.</p></div>
+        </div>
+        <div class="about-feat">
+          <div class="about-feat-icon"><i class="fa-solid fa-chalkboard-user"></i></div>
+          <div class="about-feat-text"><h5>Professores como Criadores</h5><p>Todo conteudo dos Minigames e revisado e aprovado por profissionais de educação antes de ir ao ar.</p></div>
+        </div>
+        <div class="about-feat">
+          <div class="about-feat-icon"><i class="fa-solid fa-shield-halved"></i></div>
+          <div class="about-feat-text"><h5>Moderação Educacional</h5><p>O Fórum é supervisionado por coordenadores pedagógicos que garantem um ambiente respeitoso e construtivo.</p></div>
+        </div>
+      </div>
+    </div>
+    <div class="about-img-side">
+      <div class="about-card">
+        <div class="about-card-icon"><i class="fa-solid fa-code"></i></div>
+        <div class="about-card-text"><h4>Desenvolvido por Luiz Miguel</h4><p>Estudante e desenvolvedor que criou a plataforma do zero para sua escola e comunidade.</p></div>
+      </div>
+      <div class="about-card">
+        <div class="about-card-icon"><i class="fa-solid fa-earth-americas"></i></div>
+        <div class="about-card-text"><h4>Aberta para todo o Brasil</h4><p>Embora tenha nascido em Itaboraí, qualquer professor ou aluno do país pode se cadastrar gratuitamente.</p></div>
+      </div>
+      <div class="about-card">
+        <div class="about-card-icon"><i class="fa-solid fa-mobile-screen"></i></div>
+        <div class="about-card-text"><h4>100% responsiva</h4><p>Funciona em computadores, tablets e celulares &mdash; inclusive em telas menores de estudantes.</p></div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="section section-gray" id="faq" aria-labelledby="t-faq">
+  <div class="container">
+    <div class="section-header">
+      <div class="section-label"><i class="fa-solid fa-circle-question"></i> FAQs</div>
+      <h2 class="section-title" id="t-faq">Perguntas Frequentes</h2>
+      <p>As dúvidas mais comuns respondidas de forma direta.</p>
+    </div>
+    <div class="faq-list">
+      <div class="faq-item"><button class="faq-q" aria-expanded="false">O Centro Educacional de Itaboraí é uma plataforma oficial da Prefeitura de Itaboraí? <i class="fa-solid fa-chevron-down"></i></button><div class="faq-a">Não. O Centro Educacional de Itaboraí é um projeto independente e não-oficial, desenvolvido voluntariamente. Não possui vínculo com a Prefeitura de Itaboraí, a Secretaria de Educação ou qualquer orgão público. Referenciamos instituições públicas apenas para facilitar o acesso dos usuários a informações oficiais.</div></div>
+      <div class="faq-item"><button class="faq-q" aria-expanded="false">Quanto custa usar o Centro Educacional de Itaboraí? <i class="fa-solid fa-chevron-down"></i></button><div class="faq-a">Nada. O Centro Educacional de Itaboraí é completamente gratuito &mdash; sempre foi e sempre será. Não há planos pagos, assinaturas ou cobranças ocultas. Se quiser apoiar o projeto voluntariamente, há uma opção de doação via PIX <a href="doacao1f.html" style="color: #E67817; font-weight: bold;">nesta página</a>.</div></div>
+      <div class="faq-item"><button class="faq-q" aria-expanded="false">Quem pode se cadastrar? <i class="fa-solid fa-chevron-down"></i></button><div class="faq-a">Qualquer pessoa ligada ao ambiente educacional: alunos do ensino fundamental e médio, professores, coordenadores pedagógicos e orientadores educacionais. O cadastro é aberto, gratuito e leva menos de dois minutos.</div></div>
+      <div class="faq-item"><button class="faq-q" aria-expanded="false">Como um professor cria um Minigame? <i class="fa-solid fa-chevron-down"></i></button><div class="faq-a">Para criar um Minigame, o usuário precisa possuir o papel "Professor", "Coordenador" ou "Administrador". O conteúdo é estruturado em JSON diretamente no banco de dados e aceita perguntas para digitar com suporte a timer e embaralhamento de questoes.</div></div>
+      <div class="faq-item"><button class="faq-q" aria-expanded="false">Meus dados estão seguros? <i class="fa-solid fa-chevron-down"></i></button><div class="faq-a">Sim. A autenticação é gerenciada pelo Supabase Auth, um serviço de gerenciamento de identidade com criptografia de ponta. Senhas nunca são armazenadas em texto puro. Para detalhes completos, leia a <a href="privacidade1f.html" style="color: #E67817; font-weight: bold;">Politica de Privacidade</a>.</div></div>
+      <div class="faq-item"><button class="faq-q" aria-expanded="false">O que acontece se eu violar regras? <i class="fa-solid fa-chevron-down"></i></button><div class="faq-a">Dependendo da infração, as penalidades variam de aviso formal a suspensão temporaria ou remoção definitiva da conta. As regras completas estão nos <a href="termos1f.html" style="color: #E67817; font-weight: bold;">Termos de Uso</a>.</div></div>
+      <div class="faq-item"><button class="faq-q" aria-expanded="false">O Centro Educacional de Itaboraí funciona no celular? <i class="fa-solid fa-chevron-down"></i></button><div class="faq-a">Sim. O Centro Educacional de Itaboraí foi desenhado para funcionar em qualquer dispositivo &mdash; computadores, tablets e celulares. O layout se adapta automaticamente ao tamanho da tela, sem necessidade de instalar nenhum aplicativo.</div></div>
+    </div>
+  </div>
+</section>
+
+<section class="section" id="ajuda" aria-labelledby="t-aj">
+  <div class="container">
+    <div class="section-header">
+      <div class="section-label"><i class="fa-solid fa-headset"></i> Central de ajuda</div>
+      <h2 class="section-title" id="t-aj">Precisa de algo?</h2>
+      <p>Todas as paginas de suporte e documentacao da plataforma em um so lugar.</p>
+    </div>
+    <div class="suporte-grid">
+      <a class="suporte-card" href="suporte1f.html"><div class="suporte-icon si-org"><i class="fa-solid fa-headset"></i></div><div><h4>Suporte Técnico</h4><p>Problemas, bugs e solicitações diretas a equipe do Centro Educacional de Itaboraí.</p></div><i class="fa-solid fa-chevron-right suporte-arr"></i></a>
+      <a class="suporte-card" href="doacao1f.html"><div class="suporte-icon si-gld"><i class="fa-solid fa-hand-holding-heart"></i></div><div><h4>Apoie o Projeto</h4><p>O Centro Educacional de Itaboraí é gratuito. Doações via PIX ajudam a manter no ar.</p></div><i class="fa-solid fa-chevron-right suporte-arr"></i></a>
+      <a class="suporte-card" href="termos1f.html"><div class="suporte-icon si-blu"><i class="fa-solid fa-file-contract"></i></div><div><h4>Termos de Uso</h4><p>Regras de conduta, uso aceitável e penalidades.</p></div><i class="fa-solid fa-chevron-right suporte-arr"></i></a>
+      <a class="suporte-card" href="privacidade1f.html"><div class="suporte-icon si-pur"><i class="fa-solid fa-shield-halved"></i></div><div><h4>Política de Privacidade</h4><p>Como seus dados são coletados e utilizados.</p></div><i class="fa-solid fa-chevron-right suporte-arr"></i></a>
+      <a class="suporte-card" href="acessibilidade1f.html"><div class="suporte-icon si-grn"><i class="fa-solid fa-universal-access"></i></div><div><h4>Acessibilidade</h4><p>VLibras, ajuste de fonte e temas disponiveis.</p></div><i class="fa-solid fa-chevron-right suporte-arr"></i></a>
+      <a class="suporte-card" href="mailto:centroeducacionaldeitaborai@gmail.com"><div class="suporte-icon si-tel"><i class="fa-solid fa-envelope"></i></div><div><h4>E-mail direto</h4><p>centroeducacionaldeitaborai@gmail.com</p></div><i class="fa-solid fa-chevron-right suporte-arr"></i></a>
+    </div>
+  </div>
+</section>
+
+<section class="cta-banner" aria-label="Cadastre-se">
+  <div class="container">
+    <div class="cta-text">
+      <h2><i class="fa-solid fa-rocket"></i> Faça parte do Centro Educacional de Itaboraí!</h2>
+      <p>Professores, coordenadores e alunos &mdash; a plataforma educacional de Itaboraí é para todos.</p>
+    </div>
+    <div style="display:flex;gap:10px;flex-wrap:wrap;">
+      <a href="junte-se.html" class="btn btn-dark"><i class="fa-solid fa-user-plus"></i> Junte-se a nós!</a>
+      <a href="doacao1f.html" class="btn" style="background:rgba(15,9,74,.12);color:var(--cei-dark);border:2px solid rgba(15,9,74,.25);"><i class="fa-solid fa-hand-holding-heart"></i> Apoiar o projeto</a>
+    </div>
+  </div>
+</section>
+
+<footer class="footer" role="contentinfo">
+  <div class="footer-main"><div class="container"><div class="footer-grid">
+    <div class="footer-brand">
+      <div class="logo">
+        <div class="logo-emblem" aria-hidden="true"><i class="fa-solid fa-cubes-stacked"></i></div>
+        <div class="logo-text"><span class="abbr">"O amanhã, hoje."</span><span class="full"><i>- Luiz Miguel</i></span></div>
+      </div>
+      <p>Plataforma pedagógica digital desenvolvida para fortalecer o ensino e a aprendizagem nas escolas municipais de Itaboraí, Rio de Janeiro.</p>
+      <div class="footer-socials" aria-label="Redes sociais">
+        <a href="https://www.youtube.com/@CentroEducacionaldeItaboraí" aria-label="Nosso YouTube"><i class="fa-brands fa-youtube"></i></a>
+        <a href="https://instagram.com/centroeducacionaldeitaborai" aria-label="Nosso Instagram"><i class="fa-brands fa-instagram"></i></a>
+        <a href="mailto:centroeducacionaldeitaborai@gmail.com" aria-label="Nosso Contato"><i class="fa-solid fa-envelope"></i></a>
+      </div>
+    </div>
+    <div class="footer-col"><h5>Plataforma</h5><ul>
+      <li><a href="index.html"><i class="fa-solid fa-house"></i> Inicio</a></li>
+      <li><a href="minigames1f.html"><i class="fa-solid fa-gamepad"></i> Minigames</a></li>
+      <li><a href="forum1f.html"><i class="fa-solid fa-comments"></i> Fórum</a></li>
+      <li><a href="ranking1f.html"><i class="fa-solid fa-trophy"></i> Ranking</a></li>
+      <li><a href="usuarios1f.html"><i class="fa-solid fa-user-circle"></i> Usuarios</a></li>
+      <li><a href="calendario1f.html"><i class="fa-solid fa-calendar-days"></i> Calendário</a></li>
+      <li><a href="doacao1f.html"><i class="fa-solid fa-hand-holding-heart"></i> Apoie este Projeto</a></li>
+    </ul></div>
+    <div class="footer-col"><h5>Acesso</h5><ul>
+      <li><a href="entrar.html"><i class="fa-solid fa-right-to-bracket"></i> Entrar</a></li>
+      <li><a href="junte-se.html"><i class="fa-solid fa-user-plus"></i> Juntar-se</a></li>
+      <li><a href="privacidade1f.html"><i class="fa-solid fa-shield-halved"></i> Privacidade</a></li>
+      <li><a href="termos1f.html"><i class="fa-solid fa-file-contract"></i> Termos de Uso</a></li>
+      <li><a href="suporte1f.html"><i class="fa-solid fa-headset"></i> Suporte</a></li>
+    </ul></div>
+    <div class="footer-col"><h5>Institucional</h5><ul>
+      <li><a href="sobre1f.html"><i class="fa-solid fa-circle-info"></i> Sobre Nós</a></li>
+      <li><a href="https://site.ib.itaborai.rj.gov.br/orgaos_municipais/educacao/"><i class="fa-solid fa-school"></i> Secretaria de Educação</a></li>
+      <li><a href="https://site.ib.itaborai.rj.gov.br"><i class="fa-solid fa-landmark"></i> Prefeitura de Itaboraí</a></li>
+      <li><a href="acessibilidade1f.html"><i class="fa-solid fa-universal-access"></i> Acessibilidade</a></li>
+      <li><a href="mailto:centroeducacionaldeitaborai@gmail.com"><i class="fa-solid fa-envelope"></i> Contato</a></li>
+    </ul></div>
+  </div></div></div>
+  <div class="footer-bottom"><div class="container">
+    <p>&copy; <span id="currentYear"></span> <span class="gold">Centro Educacional de Itaboraí</span>. Todos os direitos reservados.</p>
+  </div></div>
+</footer>
+
+<button class="vlibras-btn" id="vlibrasBtn" aria-label="Ativar VLibras"><i class="fa-solid fa-hands"></i></button>
+<div class="vlibras-tooltip" aria-hidden="true">Ativar VLibras</div>
+<div vw class="enabled"><div vw-access-button class="active"></div><div vw-plugin-wrapper><div class="vw-plugin-top-wrapper"></div></div></div>
+<script src="https://vlibras.gov.br/app/vlibras-plugin.js"></script>
+<script>new window.VLibras.Widget('https://vlibras.gov.br/app');</script>
+
+<script>
+  const SUPABASE_URL = 'SUPABASE_URL_AQUI';
+  const SUPABASE_KEY = 'SUPABASE_ANON_KEY_AQUI';
+  async function sbGet(p) {
+    try { const r = await fetch(SUPABASE_URL+'/rest/v1/'+p,{headers:{'apikey':SUPABASE_KEY,'Authorization':'Bearer '+SUPABASE_KEY}}); return r.ok?await r.json():null; } catch{return null;}
+  }
+  (async function(){
+    const [u,m,f] = await Promise.all([sbGet('usuarios?select=id'),sbGet('minigames?select=id'),sbGet('forum_posts?select=id')]);
+    if(u) document.getElementById('hU').textContent=u.length;
+    if(m) document.getElementById('hM').textContent=m.length;
+    if(f) document.getElementById('hT').textContent=f.length;
+  })();
+
+  document.getElementById('currentYear').textContent = new Date().getFullYear();
+
+  const hamburger = document.getElementById('hamburgerBtn');
+  const drawer    = document.getElementById('navDrawer');
+  const overlay   = document.getElementById('drawerOverlay');
+  const closeBtn  = document.getElementById('drawerClose');
+  function openDrawer()  { drawer.classList.add('open');    hamburger.setAttribute('aria-expanded','true');  document.body.style.overflow='hidden'; }
+  function closeDrawer() { drawer.classList.remove('open'); hamburger.setAttribute('aria-expanded','false'); document.body.style.overflow=''; }
+  hamburger.addEventListener('click', openDrawer);
+  overlay.addEventListener('click',   closeDrawer);
+  closeBtn.addEventListener('click',  closeDrawer);
+  drawer.querySelectorAll('a').forEach(a => a.addEventListener('click', closeDrawer));
+
+  let fontSize = parseInt(localStorage.getItem('cei_fontsize') || '15', 10);
+  function applyFont() { document.body.style.fontSize = fontSize + 'px'; }
+  function changeFontSize(d) { fontSize = Math.min(22, Math.max(12, fontSize+d)); localStorage.setItem('cei_fontsize', fontSize); applyFont(); }
+  applyFont();
+
+  const DARK_VARS = {'--cei-white':'#0E1117','--cei-text':'#E8ECF0','--cei-gray':'#1A1F28','--cei-border':'#2E3440','--cei-muted':'#8B9AAB'};
+  let darkOn = localStorage.getItem('cei_dark') === '1';
+  function applyDark(on) {
+    Object.keys(DARK_VARS).forEach(v => on ? document.documentElement.style.setProperty(v, DARK_VARS[v]) : document.documentElement.style.removeProperty(v));
+    localStorage.setItem('cei_dark', on ? '1' : '0');
+  }
+  function toggleContrast() { darkOn = !darkOn; applyDark(darkOn); }
+  applyDark(darkOn);
+
+  document.getElementById('vlibrasBtn').addEventListener('click', function() {
+    const ab = document.querySelector('[vw-access-button]');
+    if (ab) { ab.style.display='flex'; ab.click(); ab.style.display='none'; }
+  });
+
+  document.querySelectorAll('.faq-q').forEach(btn => {
+    btn.addEventListener('click', function() {
+      const item = this.closest('.faq-item');
+      const wasOpen = item.classList.contains('open');
+      document.querySelectorAll('.faq-item.open').forEach(i => { i.classList.remove('open'); i.querySelector('.faq-q').setAttribute('aria-expanded','false'); });
+      if (!wasOpen) { item.classList.add('open'); this.setAttribute('aria-expanded','true'); }
+    });
+  });
+</script>
+</body>
+</html>
